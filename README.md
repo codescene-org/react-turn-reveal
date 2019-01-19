@@ -2,7 +2,7 @@
 
 > A 3D reveal animation library for React.
 
-[![NPM](https://img.shields.io/npm/v/react-turn-reveal.svg)](https://www.npmjs.com/package/react-turn-reveal) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-turn-reveal.svg)](https://www.npmjs.com/package/react-turn-reveal)
 
 ## Install
 
