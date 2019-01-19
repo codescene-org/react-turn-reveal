@@ -10,6 +10,7 @@ devDependencies:
   eslint: 5.12.1
   eslint-config-standard: 11.0.0
   eslint-config-standard-react: 6.0.0
+  eslint-import-resolver-node: 0.3.2
   eslint-plugin-import: 2.14.0
   eslint-plugin-node: 7.0.1
   eslint-plugin-promise: 4.0.1
@@ -10458,6 +10459,7 @@ specifiers:
   eslint: ^5.0.1
   eslint-config-standard: ^11.0.0
   eslint-config-standard-react: ^6.0.0
+  eslint-import-resolver-node: ^0.3.2
   eslint-plugin-import: ^2.13.0
   eslint-plugin-node: ^7.0.1
   eslint-plugin-promise: ^4.0.0
