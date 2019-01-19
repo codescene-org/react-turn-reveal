@@ -1,6 +1,6 @@
 {
   "name": "react-turn-reveal",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A 3D reveal animation library for React.",
   "author": "cdfa",
   "license": "GNU GPL v3.0",
