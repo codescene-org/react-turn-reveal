@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A 3D reveal animation library for React.",
   "author": "cdfa",
-  "license": "GNU GPL v3.0",
+  "license": "SEE LICENSE IN ./LICENSE",
   "repository": "cdfa/react-turn-reveal",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
