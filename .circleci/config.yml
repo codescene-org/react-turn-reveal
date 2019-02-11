@@ -7,15 +7,17 @@ version: 2.1
 orbs:
   node: circleci/node@0.0.7
 
+workdir: &workdir
+  working_directory: ~/react-turn-reveal
+
 jobs:
   build:
     executor: node/default
-    working_directory: ~/react-turn-reveal
+    <<: *workdir
 
     steps:
       - checkout
       - node/with-cache:
           steps:
-            - run: sudo npm i -g pnpm
-            - run: pnpm i
+            - run: npm i
             - run: npm run build
