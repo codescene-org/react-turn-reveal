@@ -1,0 +1,23 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+orbs:
+  node: circleci/node@0.0.7
+
+workdir: &workdir
+  working_directory: ~/react-turn-reveal
+
+jobs:
+  build:
+    executor: node/default
+    <<: *workdir
+
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm i
+            - run: npm run build
