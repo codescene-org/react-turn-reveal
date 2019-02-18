@@ -7,13 +7,10 @@ version: 2.1
 orbs:
   node: circleci/node@0.0.7
 
-workdir: &workdir
-  working_directory: ~/react-turn-reveal
-
 jobs:
   build:
     executor: node/default
-    <<: *workdir
+    working_directory: ~/react-turn-reveal
 
     steps:
       - checkout
