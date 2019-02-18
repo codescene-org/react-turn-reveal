@@ -1,0 +1,8 @@
+{
+  "short_name": "react-turn-reveal",
+  "name": "react-turn-reveal",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
