@@ -7,6 +7,16 @@ version: 2.1
 orbs:
   node: circleci/node@0.0.7
 
+workflows:
+  version: 2
+
+  review:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
+
 jobs:
   build:
     executor: node/default
