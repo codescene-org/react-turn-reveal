@@ -12,10 +12,7 @@ workflows:
 
   review:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore: gh-pages
+      - build
 
 jobs:
   build:

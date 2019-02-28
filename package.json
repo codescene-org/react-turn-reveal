@@ -18,7 +18,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
-    "deploy": "docz build && gh-pages -d .docz/dist"
+    "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\""
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
