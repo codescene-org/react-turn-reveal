@@ -18,10 +18,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "npm run build",
-    "predeploy": "cd example && npm run build",
-    "deploy": "gh-pages -d example/build",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "deploy": "docz build && gh-pages -d .docz/dist"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
