@@ -1,8 +1,3 @@
----
-name: React Turn Reveal
-route: /
----
-
 # react-turn-reveal
 
 > A 3D reveal animation library for React.
