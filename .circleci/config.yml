@@ -28,3 +28,4 @@ jobs:
           steps:
             - run: npm i
             - run: npm run build
+            - run: npx docz build
