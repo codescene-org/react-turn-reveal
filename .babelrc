@@ -4,6 +4,5 @@
       "modules": false
     }],
     "@babel/preset-react"
-  ],
-  "exclude": "node_modules/**"
+  ]
 }
