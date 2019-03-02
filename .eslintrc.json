@@ -10,7 +10,8 @@
   },
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "json"
   ],
   "parserOptions": {
     "sourceType": "module"

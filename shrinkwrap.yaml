@@ -14,6 +14,7 @@ devDependencies:
   eslint-config-standard-react: 7.0.2
   eslint-import-resolver-node: 0.3.2
   eslint-plugin-import: 2.16.0
+  eslint-plugin-json: 1.4.0
   eslint-plugin-node: 8.0.1
   eslint-plugin-prettier: 3.0.1
   eslint-plugin-promise: 4.0.1
@@ -5941,6 +5942,14 @@ packages:
       eslint: 2.x - 5.x
     resolution:
       integrity: sha512-z6oqWlf1x5GkHIFgrSvtmudnqM6Q60KM4KvpWi5ubonMjycLjndvd5+8VAZIsTlHC03djdgJuyKG6XO577px6A==
+  /eslint-plugin-json/1.4.0:
+    dependencies:
+      vscode-json-languageservice: 3.2.1
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-CECvgRAWtUzuepdlPWd+VA7fhyF9HT183pZnl8wQw5x699Mk/MbME/q8xtULBfooi3LUbj6fToieNmsvUcDxWA==
   /eslint-plugin-jsx-a11y/6.1.2/eslint@5.12.0:
     dependencies:
       aria-query: 3.0.0
@@ -8877,6 +8886,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
+  /jsonc-parser/2.0.3:
+    dev: true
+    resolution:
+      integrity: sha512-WJi9y9ABL01C8CxTKxRRQkkSpY/x2bo4Gy0WuiZGrInxQqgxQpvkBCLNcDYcHOSdhx4ODgbFcgAvfL49C+PHgQ==
   /jsonfile/4.0.0:
     dev: true
     optionalDependencies:
@@ -14746,6 +14759,27 @@ packages:
     dev: true
     resolution:
       integrity: sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
+  /vscode-json-languageservice/3.2.1:
+    dependencies:
+      jsonc-parser: 2.0.3
+      vscode-languageserver-types: 3.14.0
+      vscode-nls: 4.0.0
+      vscode-uri: 1.0.6
+    dev: true
+    resolution:
+      integrity: sha512-ee9MJ70/xR55ywvm0bZsDLhA800HCRE27AYgMNTU14RSg20Y+ngHdQnUt6OmiTXrQDI/7sne6QUOtHIN0hPQYA==
+  /vscode-languageserver-types/3.14.0:
+    dev: true
+    resolution:
+      integrity: sha512-lTmS6AlAlMHOvPQemVwo3CezxBp0sNB95KNPkqp3Nxd5VFEnuG1ByM0zlRWos0zjO3ZWtkvhal0COgiV1xIA4A==
+  /vscode-nls/4.0.0:
+    dev: true
+    resolution:
+      integrity: sha512-qCfdzcH+0LgQnBpZA53bA32kzp9rpq/f66Som577ObeuDlFIrtbEJ+A/+CCxjIh4G8dpJYNCKIsxpRAHIfsbNw==
+  /vscode-uri/1.0.6:
+    dev: true
+    resolution:
+      integrity: sha512-sLI2L0uGov3wKVb9EB+vIQBl9tVP90nqRvxSoJ35vI3NjxE8jfsE5DSOhWgSunHSZmKS4OCi2jrtfxK7uyp2ww==
   /w3c-hr-time/1.0.1:
     dependencies:
       browser-process-hrtime: 0.1.3
@@ -15504,6 +15538,7 @@ specifiers:
   eslint-config-standard-react: ^7.0.2
   eslint-import-resolver-node: ^0.3.2
   eslint-plugin-import: ^2.14.0
+  eslint-plugin-json: ^1.4.0
   eslint-plugin-node: ^8.0.1
   eslint-plugin-prettier: ^3.0.1
   eslint-plugin-promise: ^4.0.1

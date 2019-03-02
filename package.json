@@ -20,7 +20,7 @@
     "prepare": "npm run build",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
     "format": "npm run format:eslint && npm run format:prettier && npm run format:markdownlint && npm run format:markdownlint:mdx",
-    "format:eslint": "eslint --fix {*,src/*,src/**/*}.js {src/*,src/**/*}.jsx",
+    "format:eslint": "eslint --fix \"{*,src/*,src/**/*}.{js,jsx,json}\"",
     "format:prettier": "prettier --write \"{*,src/*,src/**/*}.mdx\"",
     "format:markdownlint": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
     "format:markdownlint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
@@ -42,6 +42,7 @@
     "eslint-config-standard-react": "^7.0.2",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.0.1",
@@ -74,8 +75,11 @@
     }
   },
   "lint-staged": {
-    "{*,src/*,src/**/*}.js src/**/*.jsx": "eslint --fix",
-    "{*,src/*,src/**/*}.mdx": ["prettier write", "markdownlint --config .markdownlint-mdxrc"],
+    "{*,src/*,src/**/*}.{js,jsx,json}": "eslint --fix",
+    "{*,src/*,src/**/*}.mdx": [
+      "prettier write",
+      "markdownlint --config .markdownlint-mdxrc"
+    ],
     "{*,src/*,src/**/*}.md": "markdownlint",
     "{*,src/*,src/**/*}.{js,jsx}": "git add"
   }
