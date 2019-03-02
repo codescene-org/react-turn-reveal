@@ -19,7 +19,11 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
-    "format": "eslint --fix {*,src/**/*}.js src/**/*.jsx && prettier --write {*,src/**/*}.mdx"
+    "format": "npm run format:eslint && npm run format:prettier && npm run format:markdownlint && npm run format:markdownlint:mdx",
+    "format:eslint": "eslint --fix {*,src/*,src/**/*}.js {src/*,src/**/*}.jsx",
+    "format:prettier": "prettier --write \"{*,src/*,src/**/*}.mdx\"",
+    "format:markdownlint": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
+    "format:markdownlint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
@@ -46,6 +50,7 @@
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
+    "markdownlint-cli": "^0.14.0",
     "prettier": "^1.16.4",
     "react": "^16.7.0",
     "react-scripts": "^2.1.3",
@@ -69,9 +74,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "npm run format",
-      "git add"
-    ]
+    "{*,src/*,src/**/*}.js src/**/*.jsx": "eslint --fix",
+    "{*,src/*,src/**/*}.mdx": ["prettier write", "markdownlint --config .markdownlint-mdxrc"],
+    "{*,src/*,src/**/*}.md": "markdownlint",
+    "{*,src/*,src/**/*}.{js,jsx}": "git add"
   }
 }
