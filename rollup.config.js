@@ -8,27 +8,27 @@ import url from "rollup-plugin-url";
 import pkg from "./package.json";
 
 export default {
-  input: "src/ExampleComponent.jsx",
-  output: [
-    {
-      file: pkg.main,
-      format: "cjs",
-      sourcemap: true
-    },
-    {
-      file: pkg.module,
-      format: "es",
-      sourcemap: true
-    }
-  ],
-  plugins: [
-    external(),
-    postcss({
-      modules: true
-    }),
-    url(),
-    babel(),
-    resolve(),
-    commonjs()
-  ]
+	input: "src/ExampleComponent.jsx",
+	output: [
+		{
+			file: pkg.main,
+			format: "cjs",
+			sourcemap: true
+		},
+		{
+			file: pkg.module,
+			format: "es",
+			sourcemap: true
+		}
+	],
+	plugins: [
+		external(),
+		postcss({
+			modules: true
+		}),
+		url(),
+		babel(),
+		resolve(),
+		commonjs()
+	]
 };
