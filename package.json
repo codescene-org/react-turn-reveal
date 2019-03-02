@@ -19,11 +19,13 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
-    "format": "npm run format:eslint && npm run format:prettier && npm run format:markdownlint && npm run format:markdownlint:mdx",
+    "format": "npm run format:eslint && npm run format:prettier && npm run lint:markdownlint && npm run lint:markdownlint:mdx",
     "format:eslint": "eslint --fix \"{*,src/*,src/**/*}.{js,jsx,json}\"",
     "format:prettier": "prettier --write \"{*,src/*,src/**/*}.mdx\"",
-    "format:markdownlint": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
-    "format:markdownlint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
+    "lint": "npm run lint:eslint && npm run lint:markdownlint && npm run lint:markdownlint:mdx",
+    "lint:eslint": "eslint --max-warnings=0 \"{*,src/*,src/**/*}.{js,jsx,json}\"",
+    "lint:markdownlint": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
+    "lint:markdownlint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
