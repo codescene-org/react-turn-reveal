@@ -23,8 +23,8 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: yarn install
+            - run: npm i -g pnpm
+            - run: pnpm i
             - run: npm run lint
-            - run: npm run test
             - run: npm run build
-            - run: npx docz build
+            - run: npm run test
