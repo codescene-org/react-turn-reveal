@@ -16,7 +16,7 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test",
     "test:coverage": "npm run test -- --coverage",
-    "build": "rollup -c && docz build",
+    "build": "rollup -c",
     "dev": "docz dev",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
     "format": "npm run format:eslint && npm run format:prettier && npm run lint:markdownlint && npm run lint:markdownlint:mdx",

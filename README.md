@@ -24,6 +24,10 @@ class Example extends Component {
 }
 ```
 
+## Contributing
+
+See `Contributing.md`.
+
 ## License
 
 GNU GPL v3.0 © [cdfa](https://github.com/cdfa)
