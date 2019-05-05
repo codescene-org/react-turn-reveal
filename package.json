@@ -14,7 +14,7 @@
     "pnpm": ">=2"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts test",
+    "test": "react-scripts test",
     "test:coverage": "npm run test -- --coverage",
     "build": "rollup -c",
     "dev": "docz dev",
@@ -35,7 +35,6 @@
     "@babel/preset-env": "^7.3.0",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "cross-env": "^5.2.0",
     "docz": "^1.1.0",
     "docz-theme-default": "^1.1.0",
     "eslint": "5.16.0",

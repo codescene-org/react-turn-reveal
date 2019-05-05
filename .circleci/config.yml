@@ -32,5 +32,12 @@ jobs:
                   - run: pnpm i --shamefully-flatten
                   - run: npm run lint
                   - run: npm run build
-                  - run: npm run test
+                  - run: pnpm i --shamefully-flatten jest-junit
+                  - run:
+                      command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
+                      environment:
+                        JEST_JUNIT_OUTPUT: "reports/jest/js-test-results.xml"
+                        CI: true
+                  - store_test_results:
+                      path: reports
                   - run: npx docz build
