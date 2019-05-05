@@ -22,8 +22,15 @@ jobs:
 
     steps:
       - checkout
-      - run: pnpm i --shamefully-flatten
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run build
-      - run: npx docz build
+      - node/with-cache:
+          dir: ~/.pnpm-store
+          cache-version: v2
+          steps:
+            - node/with-cache:
+                cache-version: v3
+                steps:
+                  - run: pnpm i --shamefully-flatten
+                  - run: npm run lint
+                  - run: npm run build
+                  - run: npm run test
+                  - run: npx docz build
