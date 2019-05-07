@@ -14,6 +14,7 @@ devDependencies:
   eslint-config-standard-react: 7.0.2
   eslint-import-resolver-node: 0.3.2
   eslint-plugin-import: 2.17.2
+  eslint-plugin-jest: 22.5.1
   eslint-plugin-json: 1.4.0
   eslint-plugin-node: 8.0.1
   eslint-plugin-prettier: 3.0.1
@@ -5655,6 +5656,14 @@ packages:
       eslint: 2.x - 5.x
     resolution:
       integrity: sha512-m+cSVxM7oLsIpmwNn2WXTJoReOF9f/CtLMo7qOVmKd1KntBy0hEcuNZ3erTmWjx+DxRO0Zcrm5KwAvI9wHcV5g==
+  /eslint-plugin-jest/22.5.1:
+    dev: true
+    engines:
+      node: '>=6'
+    peerDependencies:
+      eslint: '>=5'
+    resolution:
+      integrity: sha512-c3WjZR/HBoi4GedJRwo2OGHa8Pzo1EbSVwQ2HFzJ+4t2OoYM7Alx646EH/aaxZ+9eGcPiq0FT0UGkRuFFx2FHg==
   /eslint-plugin-json/1.4.0:
     dependencies:
       vscode-json-languageservice: 3.2.1
@@ -14530,6 +14539,7 @@ specifiers:
   eslint-config-standard-react: ^7.0.2
   eslint-import-resolver-node: ^0.3.2
   eslint-plugin-import: ^2.17.2
+  eslint-plugin-jest: ^22.5.1
   eslint-plugin-json: ^1.4.0
   eslint-plugin-node: ^8.0.1
   eslint-plugin-prettier: ^3.0.1

@@ -3,7 +3,9 @@
   "extends": [
     "standard",
     "standard-react",
-    "prettier"
+    "prettier",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
   ],
   "env": {
     "es6": true,
@@ -12,7 +14,8 @@
   "plugins": [
     "react",
     "prettier",
-    "json"
+    "json",
+    "jest"
   ],
   "parserOptions": {
     "sourceType": "module"
@@ -28,7 +31,8 @@
         "*.spec.{js,jsx}"
       ],
       "env": {
-        "jest": true
+        "jest": true,
+        "jest/globals": true
       }
     }
   ]
