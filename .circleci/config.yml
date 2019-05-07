@@ -12,13 +12,32 @@ workflows:
 
   review:
     jobs:
-      - build
+      - dependencies
+      - build:
+          requires:
+            - dependencies
+      - "build docs":
+          requires:
+            - dependencies
+      - test:
+          requires:
+            - dependencies
+      - lint:
+          requires:
+            - dependencies
+
+environment: &environment
+  docker:
+    - image: cdfa/cci-react-turn-reveal-primary:1.0.0
+  working_directory: &working_directory ~/react-turn-reveal
+
+attach_workspace: &attach_workspace
+  attach_workspace:
+    at: *working_directory
 
 jobs:
-  build:
-    docker:
-      - image: cdfa/cci-react-turn-reveal-primary:1.0.0
-    working_directory: ~/react-turn-reveal
+  dependencies:
+    <<: *environment
 
     steps:
       - checkout
@@ -30,14 +49,47 @@ jobs:
                 cache-version: v3
                 steps:
                   - run: pnpm i --shamefully-flatten
-                  - run: npm run lint
-                  - run: npm run build
-                  - run: pnpm i --shamefully-flatten jest-junit
-                  - run:
-                      command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
-                      environment:
-                        JEST_JUNIT_OUTPUT: "reports/jest/js-test-results.xml"
-                        CI: true
-                  - store_test_results:
-                      path: reports
-                  - run: npx docz build
+                  - persist_to_workspace:
+                      root: .
+                      paths:
+                        - node_modules
+            - persist_to_workspace:
+                root: ~/
+                paths:
+                  - .pnpm-store
+
+  build:
+    <<: *environment
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: npm run build
+
+  lint:
+    <<: *environment
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: npm run lint
+
+  test:
+    <<: *environment
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: pnpm i --shamefully-flatten jest-junit
+      - run:
+          command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/jest/js-test-results.xml"
+            CI: true
+      - store_test_results:
+          path: reports
+
+  "build docs":
+    <<: *environment
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: npx docz build
+
