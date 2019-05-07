@@ -28,7 +28,7 @@ workflows:
 
 environment: &environment
   docker:
-    - image: cdfa/cci-react-turn-reveal-primary:1.0.0
+    - image: cdfa/cci-react-turn-reveal-primary:1.0.2
   working_directory: &working_directory ~/react-turn-reveal
 
 attach_workspace: &attach_workspace
@@ -43,12 +43,13 @@ jobs:
       - checkout
       - node/with-cache:
           dir: ~/.pnpm-store
-          cache-version: v2
+          cache-version: v4
           steps:
             - node/with-cache:
                 cache-version: v3
                 steps:
                   - run: pnpm i --shamefully-flatten
+                  - run: node-prune
                   - persist_to_workspace:
                       root: .
                       paths:
