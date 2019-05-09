@@ -12,17 +12,7 @@ npm install --save react-turn-reveal
 
 ## Usage
 
-```jsx
-import React, { Component } from "react";
-
-import MyComponent from "react-turn-reveal";
-
-class Example extends Component {
-  render() {
-    return <MyComponent />;
-  }
-}
-```
+To do
 
 ## Contributing
 
