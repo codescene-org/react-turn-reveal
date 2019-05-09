@@ -7,7 +7,7 @@ import url from "rollup-plugin-url";
 import pkg from "./package.json";
 
 export default {
-	input: "src/ExampleComponent.jsx",
+	input: "src/TurnReveal.jsx",
 	output: [
 		{
 			file: pkg.main,

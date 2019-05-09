@@ -1,0 +1,26 @@
+---
+name: TurnReveal
+---
+
+# TurnReveal
+
+A `<TurnReveal>` component is a component that can turn away or turn into view.
+
+import { Playground, Props } from "docz";
+import TurnReveal, { Direction, Transition } from "./TurnReveal";
+import styled from "styled-components";
+
+<Props of={TurnReveal} />
+
+<Playground>
+    {() => {
+        const Front = styled.div(["height: 100px; width: 100px; background: #fff"]);
+
+        return (
+            <TurnReveal transition={Transition.show} direction={Direction.right}>
+                <Front />
+            </TurnReveal>
+        )
+    }}
+
+</Playground>
