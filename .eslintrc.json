@@ -1,8 +1,6 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "standard",
-    "standard-react",
     "prettier",
     "plugin:jest/recommended",
     "plugin:jest/style"
