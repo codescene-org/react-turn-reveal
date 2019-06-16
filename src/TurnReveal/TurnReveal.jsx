@@ -4,6 +4,7 @@ import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import PropTypes from "prop-types";
 
+// noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.Component {
 	static propTypes = {
 		back: PropTypes.element
@@ -83,10 +84,10 @@ const animationProperties = props => {
 };
 
 const turnAnimation = ({
-												 transition,
-												 direction,
-												 hideAngles: { vertical, horizontal }
-											 }) => {
+	transition,
+	direction,
+	hideAngles: { vertical, horizontal }
+}) => {
 	const horizontalVector = [
 		0,
 		direction === Direction.right ? -1 : 1,
@@ -103,17 +104,17 @@ const turnAnimation = ({
 	const { fromVector, toVector, fromVisibility, toVisibility } =
 		transition === Transition.hide
 			? {
-				fromVector: visibleVector,
-				toVector: hiddenVector,
-				fromVisibility: "visible",
-				toVisibility: "hidden"
-			}
+					fromVector: visibleVector,
+					toVector: hiddenVector,
+					fromVisibility: "visible",
+					toVisibility: "hidden"
+			  }
 			: {
-				fromVector: hiddenVector,
-				toVector: visibleVector,
-				fromVisibility: "hidden",
-				toVisibility: "visible"
-			};
+					fromVector: hiddenVector,
+					toVector: visibleVector,
+					fromVisibility: "hidden",
+					toVisibility: "visible"
+			  };
 
 	const toTransformString = vector => `transform: rotate3d(${vector.join()})`;
 
