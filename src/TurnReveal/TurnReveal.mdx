@@ -14,6 +14,7 @@ import styled from "styled-components";
 
 <Playground>
     {() => {
+        // For now we have to do template literals like this. See https://github.com/mdx-js/mdx/issues/195
         const Front = styled.div(["height: 100px; width: 100px; background: #fff"]);
 
         return (
@@ -22,5 +23,4 @@ import styled from "styled-components";
             </TurnReveal>
         )
     }}
-
 </Playground>
