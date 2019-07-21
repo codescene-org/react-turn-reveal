@@ -6,12 +6,6 @@ import PropTypes from "prop-types";
 
 // noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.Component {
-	static propTypes = {
-		back: PropTypes.element
-		// transition: PropTypes.oneOf(Object.keys(Transition)),
-		// direction: PropTypes.oneOf(Object.keys(Direction))
-	};
-
 	element = React.createRef();
 
 	render() {
@@ -62,6 +56,12 @@ export const Direction = {
 	top: "top",
 	left: "left",
 	bottom: "bottom"
+};
+
+TurnReveal.propTypes = {
+	back: PropTypes.element,
+	transition: PropTypes.oneOf(Object.keys(Transition)).isRequired,
+	direction: PropTypes.oneOf(Object.keys(Direction)).isRequired
 };
 
 const directionTransforms = {
