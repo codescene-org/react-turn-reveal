@@ -19,9 +19,9 @@ workflows:
       - "build docs":
           requires:
             - dependencies
-      - test:
-          requires:
-            - dependencies
+#      - test:
+#          requires:
+#            - dependencies
       - lint:
           requires:
             - dependencies
@@ -72,19 +72,19 @@ jobs:
       - *attach_workspace
       - run: npm run lint
 
-  test:
-    <<: *environment
-    steps:
-      - checkout
-      - *attach_workspace
-      - run: pnpm i --shamefully-flatten jest-junit
-      - run:
-          command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
-          environment:
-            JEST_JUNIT_OUTPUT: "reports/jest/js-test-results.xml"
-            CI: true
-      - store_test_results:
-          path: reports
+#  test:
+#    <<: *environment
+#    steps:
+#      - checkout
+#      - *attach_workspace
+#      - run: pnpm i --shamefully-flatten jest-junit
+#      - run:
+#          command: npm run test -- --ci --runInBand --reporters=default --reporters=jest-junit
+#          environment:
+#            JEST_JUNIT_OUTPUT: "reports/jest/js-test-results.xml"
+#            CI: true
+#      - store_test_results:
+#          path: reports
 
   "build docs":
     <<: *environment
