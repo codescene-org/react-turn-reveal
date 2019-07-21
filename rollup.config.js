@@ -6,13 +6,15 @@ import url from "rollup-plugin-url";
 
 import pkg from "./package.json";
 
+// noinspection JSUnusedGlobalSymbols
 export default {
 	input: "src/TurnReveal/TurnReveal.jsx",
 	output: [
 		{
 			file: pkg.main,
 			format: "cjs",
-			sourcemap: true
+			sourcemap: true,
+			exports: "named"
 		},
 		{
 			file: pkg.module,
