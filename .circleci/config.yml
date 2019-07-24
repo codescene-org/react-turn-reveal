@@ -48,7 +48,7 @@ jobs:
             - node/with-cache:
                 cache-version: v3
                 steps:
-                  - run: pnpm i --shamefully-flatten
+                  - run: pnpm i
                   - persist_to_workspace:
                       root: .
                       paths:
