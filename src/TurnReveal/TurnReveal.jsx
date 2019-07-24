@@ -26,7 +26,7 @@ export default class TurnReveal extends React.Component {
 		}
 
 		return (
-			<Perspective>
+			<Perspective style={this.props.style}>
 				{/* getBoundingClientRect is undefined on React components, so we need a plain DOM element here */}
 				<div ref={this.element}>
 					{this.props.back}
