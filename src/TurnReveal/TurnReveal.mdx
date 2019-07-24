@@ -15,11 +15,23 @@ import styled from "styled-components";
 <Playground>
     {() => {
         // For now we have to do template literals like this. See https://github.com/mdx-js/mdx/issues/195
-        const Front = styled.div(["height: 100px; width: 100px; background: #fff"]);
+        const Front = styled.div(["\
+            height: 100%;\
+            width: 100%;\
+            background: #1fb6ff;\
+            display: flex;\
+            justify-content: center;\
+            flex-direction: column;\
+            text-align: center;\
+        "]);
 
         return (
-            <TurnReveal transition={Transition.show} direction={Direction.right}>
-                <Front />
+            <TurnReveal
+                transition={Transition.show}
+                direction={Direction.right}
+                <Front>
+                    More info
+                </Front>
             </TurnReveal>
         )
     }}
