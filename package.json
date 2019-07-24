@@ -20,13 +20,17 @@
     "build": "rollup -c",
     "dev": "docz dev",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
-    "format": "npm-run-all --aggregate-output -p format:** lint:markdownlint:**",
-    "format:eslint": "eslint --fix \"{*,src/*,src/**/*}.{js,jsx,json}\"",
-    "format:prettier": "prettier --write \"{*,src/*,src/**/*}.mdx\"",
-    "lint": "npm-run-all lint:**",
-    "lint:eslint": "eslint --max-warnings=0 \"{*,src/*,src/**/*}.{js,jsx,json}\"",
-    "lint:markdownlint:md": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
-    "lint:markdownlint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
+    "format": "npm-run-all --aggregate-output -p format:**",
+    "format:js": "eslint --fix \"{*,src/*,src/**/*}.{js,jsx,json}\"",
+    "format:mdx": "prettier --write \"{*,src/*,src/**/*}.mdx\"",
+    "lint": "npm-run-all --aggregate-output -p lint:**",
+    "lint:js": "eslint --max-warnings=0 \"{*,src/*,src/**/*}.{js,jsx,json}\"",
+    "lint:md": "npx markdownlint \"{*,src/*,src/**/*}.md\"",
+    "lint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,src/*,src/**/*}.mdx\""
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "styled-components": "^4.3.1"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
@@ -72,10 +76,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "prop-types": "^15.7.2",
-    "styled-components": "^4.3.1"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -84,10 +84,10 @@
   "lint-staged": {
     "{*,src/*,src/**/*}.{js,jsx,json}": "eslint --fix",
     "{*,src/*,src/**/*}.mdx": [
-      "prettier write",
+      "prettier --write",
       "markdownlint --config .markdownlint-mdxrc"
     ],
     "{*,src/*,src/**/*}.md": "markdownlint",
-    "{*,src/*,src/**/*}.{js,jsx}": "git add"
+    "{*,src/*,src/**/*}.{js,jsx,json,mdx}": "git add"
   }
 }
