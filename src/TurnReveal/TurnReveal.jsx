@@ -50,6 +50,7 @@ export default class TurnReveal extends React.Component {
 const perspective = 400;
 
 export const Transition = { hide: "hide", show: "show" };
+Object.freeze(Transition);
 
 export const Direction = {
 	right: "right",
@@ -57,6 +58,7 @@ export const Direction = {
 	left: "left",
 	bottom: "bottom"
 };
+Object.freeze(Direction);
 
 TurnReveal.propTypes = {
 	back: PropTypes.element,
