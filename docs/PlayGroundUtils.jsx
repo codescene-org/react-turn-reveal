@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import transpose from "object-transpose";
-import { Direction, Transition, oppositeTransition } from "../TurnReveal";
+import {
+	Direction,
+	Transition,
+	oppositeTransition
+} from "src/TurnReveal/TurnReveal";
 import React from "react";
+import Placeholder from "docs/placeholder.png";
+import { Playground } from "docz";
 
 export const Front = styled.div`
 	height: 100%;
@@ -19,6 +25,10 @@ export const Image = styled.img`
 	height: auto;
 	display: block; // Fixes small spacing on the bottom
 `;
+
+export const PlaceHolderImage = (
+	<Image src={Placeholder} alt="Placeholder" width="40%" />
+);
 
 const Container = styled.div`
 	display: grid;

@@ -1,0 +1,20 @@
+---
+name: FollowReveal
+route: /follow-reveal
+---
+
+# FollowReveal
+
+A `<FollowReveal>` is a like a `<TurnReveal>` that follows the mouse's movements in and out of the component.
+
+import { Props, Playground } from "docz";
+import FollowReveal from "./FollowReveal";
+import { Front, PlaceHolderImage } from "docs/PlayGroundUtils";
+
+<Props of={FollowReveal} />
+
+<Playground style={{ display: "flex", justifyContent: "center" }}>
+  <FollowReveal back={PlaceHolderImage}>
+    <Front>More info</Front>
+  </FollowReveal>
+</Playground>

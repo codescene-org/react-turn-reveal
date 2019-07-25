@@ -7,12 +7,11 @@ route: /turn-reveal
 
 A `<TurnReveal>` component is a component that can turn out of or turn into view.
 
-Most of the code for running the playground below is moved to `./PlayGroundUtils.jsx` to keep the demo below as simple as possible. Open it in CodeSandBox to look around.
+Most of the code for running the playground below is moved to `docs/PlayGroundUtils.jsx` to keep the demo below as simple as possible. Open it in CodeSandBox to look around.
 
 import { Playground, Props } from "docz";
-import TurnReveal, { Direction, Transition } from "../TurnReveal";
-import Placeholder from "src/placeholder.png";
-import { ControlWrapper, Front, Image } from "./PlayGroundUtils";
+import TurnReveal, { Direction, Transition } from "./TurnReveal";
+import { ControlWrapper, Front, PlaceHolderImage } from "docs/PlayGroundUtils";
 
 <Props of={TurnReveal} />
 
@@ -42,9 +41,7 @@ import { ControlWrapper, Front, Image } from "./PlayGroundUtils";
                         <TurnReveal
                             transition={this.state.transition}
                             direction={this.state.direction}
-                            back={
-                                <Image src={Placeholder} alt="Placeholder" width="40%"/>
-                            }
+                            back={PlaceHolderImage}
                             style={{
                                 gridArea: "reveal",
                                 placeSelf: "center",
