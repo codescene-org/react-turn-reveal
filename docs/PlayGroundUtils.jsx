@@ -23,7 +23,7 @@ export const Image = styled.img`
 	width: 100%;
 	max-width: 400px;
 	height: auto;
-	display: block; // Fixes small spacing on the bottom
+	vertical-align: middle; // Fixes small spacing on the bottom
 `;
 
 export const PlaceHolderImage = (
@@ -69,3 +69,22 @@ export const ControlWrapper = ({ transition, updateReveal, children }) => (
 		{children}
 	</Container>
 );
+
+export const Masonry = styled.div`
+	display: grid;
+	grid-gap: 20px;
+	width: 500px;
+	grid-template-areas:
+		"a a b c"
+		"a a b d"
+		"e f f d"
+		"g g g d";
+`;
+
+const transform = xs => xs.map(x => x * 115 + (x - 1) * 20); // scale and account for gaps
+
+export const gridElementData = transpose({
+	area: ["a", "b", "c", "d", "e", "f", "g"],
+	width: transform([2, 1, 1, 1, 1, 2, 3]),
+	height: transform([2, 2, 1, 3, 1, 1, 1])
+});

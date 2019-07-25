@@ -7,9 +7,18 @@ route: /follow-reveal
 
 A `<FollowReveal>` is a like a `<TurnReveal>` that follows the mouse's movements in and out of the component.
 
+## Basic Usage
+
 import { Props, Playground } from "docz";
 import FollowReveal from "./FollowReveal";
-import { Front, PlaceHolderImage } from "docs/PlayGroundUtils";
+import {
+  Front,
+  PlaceHolderImage,
+  Masonry,
+  gridElementData,
+  Image
+} from "docs/PlayGroundUtils";
+import Dummy from "dummyjs";
 
 <Props of={FollowReveal} />
 
@@ -17,4 +26,22 @@ import { Front, PlaceHolderImage } from "docs/PlayGroundUtils";
   <FollowReveal back={PlaceHolderImage}>
     <Front>More info</Front>
   </FollowReveal>
+</Playground>
+
+## Masonry Layout
+
+<Playground
+  style={{
+    overflow: "auto"
+  }}
+>
+  <Masonry>
+    {gridElementData.map(({ area, width, height }) => (
+      <div key={area} style={{ gridArea: area }}>
+        <FollowReveal back={<Image src={Dummy.img(width, height)} />}>
+          <Front>More info</Front>
+        </FollowReveal>
+      </div>
+    ))}
+  </Masonry>
 </Playground>
