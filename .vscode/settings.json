@@ -13,5 +13,8 @@
         "yaml",
         "yml"
     ],
-    "cSpell.language": "en-GB"
+    "cSpell.language": "en-GB",
+    "cSpell.words": [
+        "docz"
+    ]
 }

@@ -1,0 +1,67 @@
+---
+name: TurnReveal
+route: /turn-reveal
+---
+
+# TurnReveal
+
+A `<TurnReveal>` component is a component that can turn out of or turn into view.
+
+Most of the code for running the playground below is moved to `./PlayGroundUtils.jsx` to keep the demo below as simple as possible. Open it in CodeSandBox to look around.
+
+import { Playground, Props } from "docz";
+import TurnReveal, { Direction, Transition } from "../TurnReveal";
+import Placeholder from "src/placeholder.png";
+import { ControlWrapper, Front, Image } from "./PlayGroundUtils";
+
+<Props of={TurnReveal} />
+
+<Playground>
+    {() => {
+        class TurnRevealWrapper extends React.Component {
+            constructor(){
+                // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
+                this.state = {
+                    transition: Transition.hide,
+                    direction: Direction.right
+                };
+
+                this.updateReveal = this.updateReveal.bind(this);
+            }
+
+            updateReveal(transition, direction) {
+                this.setState({
+                    transition: transition,
+                    direction: direction
+                });
+            };
+
+            render() {
+                return (
+                    <ControlWrapper transition={this.state.transition} updateReveal={this.updateReveal}>
+                        <TurnReveal
+                            transition={this.state.transition}
+                            direction={this.state.direction}
+                            back={
+                                <Image src={Placeholder} alt="Placeholder" width="40%"/>
+                            }
+                            style={{
+                                gridArea: "reveal",
+                                placeSelf: "center",
+                                marginTop: "10px",
+                                marginBottom: "10px"
+                            }}
+                        >
+                            <Front>
+                                More info
+                            </Front>
+                        </TurnReveal>
+                    </ControlWrapper>
+                )
+            }
+        }
+
+        return <TurnRevealWrapper/>
+    }}
+
+</Playground>
