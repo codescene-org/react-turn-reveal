@@ -15,33 +15,55 @@ import {
   Front,
   PlaceHolderImage,
   Masonry,
-  gridElementData,
-  Image
 } from "docs/PlayGroundUtils";
-import Dummy from "dummyjs";
 
 <Props of={FollowReveal} />
 
 <Playground style={{ display: "flex", justifyContent: "center" }}>
-  <FollowReveal back={PlaceHolderImage}>
-    <Front>More info</Front>
-  </FollowReveal>
+  {() => {
+    const perspective = 400;
+    return (
+      <div style={{ position: "relative", perspective: perspective + "px" }}>
+        <FollowReveal perspective={perspective}>
+          <Front>More info</Front>
+        </FollowReveal>
+        <PlaceHolderImage />
+      </div>
+    );
+  }}
 </Playground>
 
 ## Masonry Layout
 
-<Playground
-  style={{
-    overflow: "auto"
+Looks even cooler in a Masonry layout.
+
+<Playground>
+  {() => {
+    const perspective = 400;
+    return (
+      <Masonry>
+        {["a", "b", "c", "d", "e", "f", "g"].map(area => (
+          <div
+            key={area}
+            style={{
+              gridArea: area,
+              position: "relative",
+              perspective: perspective + "px"
+            }}
+          >
+            <FollowReveal perspective={perspective}>
+              <Front>More info</Front>
+            </FollowReveal>
+            <div
+              style={{
+                background: "#e2e2e2",
+                width: "100%",
+                height: "100%"
+              }}
+            />
+          </div>
+        ))}
+      </Masonry>
+    );
   }}
->
-  <Masonry>
-    {gridElementData.map(({ area, width, height }) => (
-      <div key={area} style={{ gridArea: area }}>
-        <FollowReveal back={<Image src={Dummy.img(width, height)} />}>
-          <Front>More info</Front>
-        </FollowReveal>
-      </div>
-    ))}
-  </Masonry>
 </Playground>

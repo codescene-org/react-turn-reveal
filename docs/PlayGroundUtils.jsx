@@ -1,22 +1,18 @@
 import styled from "styled-components";
 import transpose from "object-transpose";
-import {
-	Direction,
-	Transition,
-	oppositeTransition
-} from "src/TurnReveal/TurnReveal";
 import React from "react";
 import Placeholder from "docs/placeholder.png";
-import { Playground } from "docz";
+import Transition, { oppositeTransition } from "src/Transition";
+import Direction from "src/Direction";
 
 export const Front = styled.div`
-	height: 100%;
-	width: 100%;
 	background: #1fb6ff;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
+	width: 100%;
+	height: 100%;
 `;
 
 export const Image = styled.img`
@@ -26,7 +22,7 @@ export const Image = styled.img`
 	vertical-align: middle; // Fixes small spacing on the bottom
 `;
 
-export const PlaceHolderImage = (
+export const PlaceHolderImage = () => (
 	<Image src={Placeholder} alt="Placeholder" width="40%" />
 );
 
@@ -36,6 +32,13 @@ const Container = styled.div`
 		". top ."
 		"left reveal right"
 		". bottom .";
+`;
+
+const RevealWrapper = styled.div`
+	grid-area: reveal;
+	place-self: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
 `;
 
 let directions = Object.keys(Direction);
@@ -66,25 +69,19 @@ export const ControlWrapper = ({ transition, updateReveal, children }) => (
 				{text}
 			</button>
 		))}
-		{children}
+		<RevealWrapper>{children}</RevealWrapper>
 	</Container>
 );
 
 export const Masonry = styled.div`
 	display: grid;
-	grid-gap: 20px;
-	width: 500px;
+	grid-gap: 3%;
 	grid-template-areas:
 		"a a b c"
 		"a a b d"
 		"e f f d"
 		"g g g d";
+	grid-template-columns: repeat(4, 22%);
+	height: 600px;
+	place-items: stretch;
 `;
-
-const transform = xs => xs.map(x => x * 115 + (x - 1) * 20); // scale and account for gaps
-
-export const gridElementData = transpose({
-	area: ["a", "b", "c", "d", "e", "f", "g"],
-	width: transform([2, 1, 1, 1, 1, 2, 3]),
-	height: transform([2, 2, 1, 3, 1, 1, 1])
-});

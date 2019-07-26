@@ -3,10 +3,14 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import * as PropTypes from "prop-types";
+import Transition from "../Transition";
+import Direction from "../Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.Component {
 	element = React.createRef();
+
+	static defaultLayout = { width: "100%", height: "100%" };
 
 	render() {
 		// on the first render, this.element.current is still null, so we need these default values
@@ -20,54 +24,47 @@ export default class TurnReveal extends React.Component {
 			const rect = element.getBoundingClientRect();
 			const { width, height } = rect;
 
-			// recalculate the angles a hideable has to turn to disappear
-			hideAngles.horizontal = getOutAngle(width) + "rad";
-			hideAngles.vertical = getOutAngle(height) + "rad";
+			// recalculate the angles the element has to turn to disappear
+			hideAngles.horizontal =
+				getOutAngle(width, this.props.perspective) + "rad";
+			hideAngles.vertical = getOutAngle(height, this.props.perspective) + "rad";
 		}
 
+		let style = { position: "absolute" };
+		if (!this.props.className)
+			style = { ...style, ...TurnReveal.defaultLayout };
+
 		return (
-			<Perspective style={this.props.style}>
-				{/* getBoundingClientRect is undefined on React components, so we need a plain DOM element here */}
-				<div ref={this.element}>
-					{this.props.back}
-					{/* React.Children.toArray makes sure we get an array, even though props.children is just the child component if it's alone. */}
-					{React.Children.toArray(this.props.children).map((child, index) => (
-						<Hideable
-							transition={this.props.transition}
-							direction={this.props.direction}
-							hideAngles={hideAngles}
-							key={index}
-						>
-							{child}
-						</Hideable>
-					))}
-				</div>
-			</Perspective>
+			<>
+				<div
+					ref={this.element}
+					className={this.props.className}
+					style={style}
+				/>
+				<Animated
+					transition={this.props.transition}
+					direction={this.props.direction}
+					hideAngles={hideAngles}
+					className={this.props.className}
+					style={style}
+				>
+					{this.props.children}
+				</Animated>
+			</>
 		);
 	}
 }
 
-const perspective = 400;
-
-export const Transition = { hide: "hide", show: "show" };
-Object.freeze(Transition);
-
-export const oppositeTransition = transition =>
-	transition === Transition.hide ? Transition.show : Transition.hide;
-
-export const Direction = {
-	right: "right",
-	top: "top",
-	left: "left",
-	bottom: "bottom"
-};
-Object.freeze(Direction);
-
 TurnReveal.propTypes = {
-	back: PropTypes.element,
 	transition: PropTypes.oneOf(Object.keys(Transition)).isRequired,
-	direction: PropTypes.oneOf(Object.keys(Direction)).isRequired
+	direction: PropTypes.oneOf(Object.keys(Direction)).isRequired,
+	perspective: PropTypes.number.isRequired,
+	className: PropTypes.string
 };
+
+const Animated = styled.div`
+	${props => animationProperties(props)}
+`;
 
 const directionTransforms = {
 	right: { x: "100%", y: "0%" },
@@ -76,7 +73,7 @@ const directionTransforms = {
 	bottom: { x: "50%", y: "100%" }
 };
 
-const getOutAngle = size => {
+const getOutAngle = (size, perspective) => {
 	return Math.atan2(size / 2, perspective) + 0.5 * Math.PI;
 };
 
@@ -134,18 +131,3 @@ const turnAnimation = ({
     }
   `;
 };
-
-const Perspective = styled.div`
-	display: inline-block;
-	perspective: ${perspective}px;
-	position: relative;
-`;
-
-const Hideable = styled.div`
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	${props => animationProperties(props)}
-`;

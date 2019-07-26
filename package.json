@@ -46,7 +46,6 @@
     "cross-env": "^5.2.0",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
-    "dummyjs": "^1.1.7",
     "eslint": "5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-import-resolver-node": "^0.3.2",

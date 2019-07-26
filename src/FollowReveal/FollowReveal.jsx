@@ -1,12 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import TurnReveal, { Direction, Transition } from "../TurnReveal/TurnReveal";
+import TurnReveal from "../TurnReveal/TurnReveal";
 import * as PropTypes from "prop-types";
+import Transition from "../Transition";
+import Direction from "../Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class FollowReveal extends React.Component {
 	static propTypes = {
-		back: PropTypes.element
+		className: PropTypes.string,
+		perspective: PropTypes.number.isRequired
 	};
 
 	state = {
@@ -25,37 +27,30 @@ export default class FollowReveal extends React.Component {
 	};
 
 	render() {
+		let style = { position: "absolute" };
+		if (!this.props.className)
+			style = { ...style, ...TurnReveal.defaultLayout };
+
 		return (
-			<TurnRevealWrapper>
-				{/*getBoundingClientRect is undefined on React components, so we need a plain DOM element here.*/}
-				{/*Putting the eventHandlers on the TurnReveal component also doesn't work for some reason.*/}
+			<>
+				<TurnReveal
+					transition={this.state.infoTransition}
+					direction={this.state.infoDirection}
+					perspective={this.props.perspective}
+					className={this.props.className}
+				>
+					{this.props.children}
+				</TurnReveal>
 				<div
 					onMouseEnter={e => this.animateInfo(e, Transition.show)}
 					onMouseLeave={e => this.animateInfo(e, Transition.hide)}
 					ref={this.revealRef}
-					className="turn-reveal-container"
-				>
-					<TurnReveal
-						back={this.props.back}
-						transition={this.state.infoTransition}
-						direction={this.state.infoDirection}
-					>
-						{this.props.children}
-					</TurnReveal>
-				</div>
-			</TurnRevealWrapper>
+					style={style}
+				/>
+			</>
 		);
 	}
 }
-
-const TurnRevealWrapper = styled.div`
-	display: flex;
-	justify-content: center;
-
-	.turn-reveal-container {
-		width: fit-content;
-	}
-`;
 
 const getClosestEdge = (event, element) => {
 	const { width, height, top, left } = element.getBoundingClientRect();
