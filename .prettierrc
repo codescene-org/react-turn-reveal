@@ -4,8 +4,7 @@
       "files": "*.{md,mdx}",
       "options": {
         "useTabs": false,
-        "trailingComma": "none",
-        "proseWrap": "never"
+        "trailingComma": "none"
       }
     }
   ]
