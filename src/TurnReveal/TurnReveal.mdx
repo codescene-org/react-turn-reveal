@@ -12,10 +12,18 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
 import { Playground, Props } from "docz";
 import TurnReveal from "./TurnReveal";
 import Direction from "src/Direction";
-import Transition from "src/Transition";
-import { ControlWrapper, Front, PlaceHolderImage } from "docs/PlayGroundUtils";
+import Transition, { oppositeTransition } from "src/Transition";
+import {
+  ControlWrapper,
+  Front,
+  PlaceHolderImage,
+  CenteringFlexBox
+} from "docs/PlayGroundUtils";
+import styled from "styled-components";
 
 <Props of={TurnReveal} />
+
+## Basic Usage
 
 <Playground>
   {() => {
@@ -28,9 +36,9 @@ import { ControlWrapper, Front, PlaceHolderImage } from "docs/PlayGroundUtils";
         };
         this.updateReveal = this.updateReveal.bind(this);
       }
-      updateReveal(transition, direction) {
+      updateReveal(direction) {
         this.setState({
-          transition: transition,
+          transition: oppositeTransition(this.state.transition),
           direction: direction
         });
       }
@@ -57,6 +65,72 @@ import { ControlWrapper, Front, PlaceHolderImage } from "docs/PlayGroundUtils";
         );
       }
     }
+    return <TurnRevealWrapper />;
+  }}
+</Playground>
+
+## Multiple `TurnReveal`s combined
+
+<Playground>
+  {() => {
+    class TurnRevealWrapper extends React.Component {
+      constructor() {
+        // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
+        this.state = {
+          transition: Transition.show
+        };
+        this.updateReveal = this.updateReveal.bind(this);
+      }
+      updateReveal() {
+        this.setState({
+          transition: oppositeTransition(this.state.transition)
+        });
+      }
+      render() {
+        const perspective = 400;
+        return (
+          <CenteringFlexBox>
+            <button
+              style={{ width: "fit-content" }}
+              onClick={this.updateReveal}
+            >
+              {this.state.transition === Transition.show ? "Show" : "Hide"}
+            </button>
+            <div style={{ height: "10px" }} />
+            <Container style={{ perspective: perspective + "px" }}>
+              <TurnReveal
+                transition={this.state.transition}
+                direction={Direction.left}
+                perspective={perspective}
+                className="half-width"
+              >
+                <Front>Left</Front>
+              </TurnReveal>
+              <TurnReveal
+                transition={this.state.transition}
+                direction={Direction.right}
+                perspective={perspective}
+                className="half-width right"
+              >
+                <Front>Right</Front>
+              </TurnReveal>
+              <PlaceHolderImage />
+            </Container>
+          </CenteringFlexBox>
+        );
+      }
+    }
+    // This is a little awkward, because MDX can't parse tagged template literals yet, see https://github.com/mdx-js/mdx/issues/195
+    const Container = styled.div([
+      "position: relative;\
+         .half-width{\
+            height: 100%;\
+            width: 50%;\
+        }\
+         .right{\
+            right: 0;\
+        }"
+    ]);
     return <TurnRevealWrapper />;
   }}
 </Playground>

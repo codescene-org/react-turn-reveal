@@ -2,7 +2,7 @@ import styled from "styled-components";
 import transpose from "object-transpose";
 import React from "react";
 import Placeholder from "docs/placeholder.png";
-import Transition, { oppositeTransition } from "src/Transition";
+import Transition from "src/Transition";
 import Direction from "src/Direction";
 
 export const Front = styled.div`
@@ -62,9 +62,7 @@ export const ControlWrapper = ({ transition, updateReveal, children }) => (
 					placeSelf: place
 				}}
 				key={direction}
-				onClick={() =>
-					updateReveal(oppositeTransition(transition), Direction[direction])
-				}
+				onClick={() => updateReveal(Direction[direction])}
 			>
 				{text}
 			</button>
@@ -84,4 +82,10 @@ export const Masonry = styled.div`
 	grid-template-columns: repeat(4, 22%);
 	height: 600px;
 	place-items: stretch;
+`;
+
+export const CenteringFlexBox = styled.div`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 `;
