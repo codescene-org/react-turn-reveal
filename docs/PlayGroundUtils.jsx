@@ -71,17 +71,10 @@ export const ControlWrapper = ({ transition, updateReveal, children }) => (
 	</Container>
 );
 
-export const Masonry = styled.div`
+export const Grid = styled.div`
 	display: grid;
-	grid-gap: 3%;
-	grid-template-areas:
-		"a a b c"
-		"a a b d"
-		"e f f d"
-		"g g g d";
-	grid-template-columns: repeat(4, 22%);
-	height: 600px;
-	place-items: stretch;
+	grid-gap: 2%;
+	grid-template-columns: repeat(4, 0.25fr);
 `;
 
 export const CenteringFlexBox = styled.div`
