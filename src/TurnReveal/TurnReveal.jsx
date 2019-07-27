@@ -56,10 +56,17 @@ export default class TurnReveal extends React.Component {
 }
 
 TurnReveal.propTypes = {
+	/** The transition to run. Options are defined in src/Transition. */
 	transition: PropTypes.oneOf(Object.keys(Transition)).isRequired,
+	/** The direction in which to run the transition. Options are defined in src/Direction. */
 	direction: PropTypes.oneOf(Object.keys(Direction)).isRequired,
+	/** The perspective distance in number of pixels. */
 	perspective: PropTypes.number.isRequired,
-	className: PropTypes.string
+	/** A class name to give give the animated element and the placeholder element used as reference of the dimensions of the animated element.
+	 * 	See the combining example below. */
+	className: PropTypes.string,
+	/** The animated element. */
+	children: PropTypes.node.isRequired
 };
 
 const Animated = styled.div`

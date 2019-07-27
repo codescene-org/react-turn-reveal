@@ -7,8 +7,13 @@ import Direction from "../Direction";
 // noinspection JSUnusedGlobalSymbols
 export default class FollowReveal extends React.Component {
 	static propTypes = {
+		/** The perspective distance in number of pixels. */
+		perspective: PropTypes.number.isRequired,
+		/** A class name to give give the animated element and the placeholder element used as reference of the dimensions of the animated element.
+		 * 	See the combining example in the `TurnReveal` docs. */
 		className: PropTypes.string,
-		perspective: PropTypes.number.isRequired
+		/** The animated element. */
+		children: PropTypes.node.isRequired
 	};
 
 	state = {
