@@ -18,10 +18,17 @@
   "parserOptions": {
     "sourceType": "module"
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
-    "//": "Don't force es6 functions to include space before paren",
-    "space-before-function-paren": 0,
-    "prettier/prettier": "warn"
+    "space-before-function-paren": 0, // Don't force es6 functions to include space before paren
+    "prettier/prettier": "warn",
+    "react/require-optimization": "warn",
+    "react/destructuring-assignment": "warn",
+    "react/static-property-placement": "warn"
   },
   "overrides": [
     {

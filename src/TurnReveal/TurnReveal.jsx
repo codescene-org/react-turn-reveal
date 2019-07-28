@@ -7,134 +7,142 @@ import Transition from "../Transition";
 import Direction from "../Direction";
 
 // noinspection JSUnusedGlobalSymbols
-export default class TurnReveal extends React.Component {
-	element = React.createRef();
+export default class TurnReveal extends React.PureComponent {
+  element = React.createRef();
 
-	static defaultLayout = { width: "100%", height: "100%" };
+  static defaultLayout = { width: "100%", height: "100%" };
 
-	render() {
-		// on the first render, this.element.current is still null, so we need these default values
-		const hideAngles = {
-			horizontal: "0",
-			vertical: "0"
-		};
+  render() {
+    const {
+      transition,
+      direction,
+      perspective,
+      className,
+      children
+    } = this.props;
 
-		if (this.element.current) {
-			const element = this.element.current;
-			const rect = element.getBoundingClientRect();
-			const { width, height } = rect;
+    // On the first render, this.element.current is still null, so we need these default values
+    const hideAngles = {
+      horizontal: "0",
+      vertical: "0"
+    };
 
-			// recalculate the angles the element has to turn to disappear
-			hideAngles.horizontal =
-				getOutAngle(width, this.props.perspective) + "rad";
-			hideAngles.vertical = getOutAngle(height, this.props.perspective) + "rad";
-		}
+    if (this.element.current) {
+      const { width, height } = this.element.current.getBoundingClientRect();
 
-		let style = { position: "absolute" };
-		if (!this.props.className)
-			style = { ...style, ...TurnReveal.defaultLayout };
+      // Recalculate the angles the element has to turn to disappear
+      hideAngles.horizontal = `${getOutAngle(width, perspective)}rad`;
+      hideAngles.vertical = `${getOutAngle(height, perspective)}rad`;
+    }
 
-		return (
-			<>
-				<div
-					ref={this.element}
-					className={this.props.className}
-					style={style}
-				/>
-				<Animated
-					transition={this.props.transition}
-					direction={this.props.direction}
-					hideAngles={hideAngles}
-					className={this.props.className}
-					style={style}
-				>
-					{this.props.children}
-				</Animated>
-			</>
-		);
-	}
+    let style = { position: "absolute" };
+    if (!className) style = { ...style, ...TurnReveal.defaultLayout };
+
+    return (
+      <>
+        <div ref={this.element} className={className} style={style} />
+        <Animated
+          transition={transition}
+          direction={direction}
+          hideAngles={hideAngles}
+          className={className}
+          style={style}
+        >
+          {children}
+        </Animated>
+      </>
+    );
+  }
 }
 
+// Disable react/static-property-placement, because docz will crash, because of the dynamic transition and direction prop types
+// See https://github.com/pedronauck/docz/issues/691
+// eslint-disable-next-line react/static-property-placement
 TurnReveal.propTypes = {
-	/** The transition to run. Options are defined in src/Transition. */
-	transition: PropTypes.oneOf(Object.keys(Transition)).isRequired,
-	/** The direction in which to run the transition. Options are defined in src/Direction. */
-	direction: PropTypes.oneOf(Object.keys(Direction)).isRequired,
-	/** The perspective distance in number of pixels. */
-	perspective: PropTypes.number.isRequired,
-	/** A class name to give give the animated element and the placeholder element used as reference of the dimensions of the animated element.
-	 * 	See the combining example below. */
-	className: PropTypes.string,
-	/** The animated element. */
-	children: PropTypes.node.isRequired
+  /** The transition to run. Options are defined in src/Transition. */
+  transition: PropTypes.oneOf(Object.keys(Transition)).isRequired,
+  /** The direction in which to run the transition. Options are defined in src/Direction. */
+  direction: PropTypes.oneOf(Object.keys(Direction)).isRequired,
+  /** The perspective distance in number of pixels. */
+  perspective: PropTypes.number.isRequired,
+  /** A class name to give give the animated element and the placeholder element used as reference of the dimensions of the animated element.
+   * 	See the combining example below. */
+  className: PropTypes.string,
+  /** The animated element. */
+  children: PropTypes.node.isRequired
 };
 
 const Animated = styled.div`
-	${props => animationProperties(props)}
+  ${props => animationProperties(props)}
 `;
 
 const directionTransforms = {
-	right: { x: "100%", y: "0%" },
-	top: { x: "50%", y: "0%" },
-	left: { x: "0%", y: "0%" },
-	bottom: { x: "50%", y: "100%" }
+  right: { x: "100%", y: "0%" },
+  top: { x: "50%", y: "0%" },
+  left: { x: "0%", y: "0%" },
+  bottom: { x: "50%", y: "100%" }
 };
 
 const getOutAngle = (size, perspective) => {
-	return Math.atan2(size / 2, perspective) + 0.5 * Math.PI;
+  return Math.atan2(size / 2, perspective) + 0.5 * Math.PI;
 };
 
 const animationProperties = props => {
-	const directionTransform = directionTransforms[props.direction];
-	return css`
-		transform-origin: ${directionTransform.x} ${directionTransform.y};
-		animation: ${turnAnimation(props)} 300ms ease 0ms 1 forwards;
-	`;
+  const directionTransform = directionTransforms[props.direction];
+
+  return css`
+    transform-origin: ${directionTransform.x} ${directionTransform.y};
+    animation: ${turnAnimation(props)} 300ms ease 0ms 1 forwards;
+  `;
 };
 
 const turnAnimation = ({
-	transition,
-	direction,
-	hideAngles: { vertical, horizontal }
+  transition,
+  direction,
+  hideAngles: { vertical, horizontal }
 }) => {
-	const horizontalVector = [
-		0,
-		direction === Direction.right ? -1 : 1,
-		0,
-		horizontal
-	];
-	const verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
-	const hiddenVector =
-		direction === Direction.right || direction === Direction.left
-			? horizontalVector
-			: verticalVector;
-	const visibleVector = [0, 0, 0, 0];
+  const horizontalVector = [
+      0,
+      direction === Direction.right ? -1 : 1,
+      0,
+      horizontal
+    ],
+    verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
 
-	const { fromVector, toVector, fromVisibility, toVisibility } =
-		transition === Transition.hide
-			? {
-					fromVector: visibleVector,
-					toVector: hiddenVector,
-					fromVisibility: "visible",
-					toVisibility: "hidden"
-			  }
-			: {
-					fromVector: hiddenVector,
-					toVector: visibleVector,
-					fromVisibility: "hidden",
-					toVisibility: "visible"
-			  };
+  const hiddenVector =
+    direction === Direction.right || direction === Direction.left
+      ? horizontalVector
+      : verticalVector;
 
-	const toTransformString = vector => `transform: rotate3d(${vector.join()})`;
+  // Disable one-var, because horizontalVector and verticalVector would get a mismatched update and query warning.
+  // See https://youtrack.jetbrains.com/issue/WEB-40325.
+  // eslint-disable-next-line one-var
+  const visibleVector = [0, 0, 0, 0],
+    { fromVector, toVector, fromVisibility, toVisibility } =
+      transition === Transition.hide
+        ? {
+            fromVector: visibleVector,
+            toVector: hiddenVector,
+            fromVisibility: "visible",
+            toVisibility: "hidden"
+          }
+        : {
+            fromVector: hiddenVector,
+            toVector: visibleVector,
+            fromVisibility: "hidden",
+            toVisibility: "visible"
+          };
 
-	return keyframes`
-    from {
-      visibility: ${fromVisibility};
-      ${toTransformString(fromVector)};
-    }
-    to {
-      visibility: ${toVisibility};
-      ${toTransformString(toVector)};
-    }
-  `;
+  const toTransformString = vector => `transform: rotate3d(${vector.join()})`;
+
+  return keyframes`
+			from {
+				visibility: ${fromVisibility};
+				${toTransformString(fromVector)};
+			}
+			to {
+				visibility: ${toVisibility};
+				${toTransformString(toVector)};
+			}
+		`;
 };
