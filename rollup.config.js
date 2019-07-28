@@ -8,26 +8,26 @@ import pkg from "./package.json";
 
 // noinspection JSUnusedGlobalSymbols
 export default {
-	input: "src/TurnReveal/TurnReveal.jsx",
-	output: [
-		{
-			file: pkg.main,
-			format: "cjs",
-			sourcemap: true,
-			exports: "named"
-		},
-		{
-			file: pkg.module,
-			format: "es",
-			sourcemap: true
-		}
-	],
-	external: ["styled-components", "prop-types"], // See https://github.com/transitive-bullshit/create-react-library/issues/89 and https://stackoverflow.com/a/52935366/11144195
-	plugins: [
-		external(),
-		url(),
-		babel(),
-		resolve({ extensions: [".js", ".jsx", ".json"] }),
-		commonjs()
-	]
+  input: "src/TurnReveal/TurnReveal.jsx",
+  output: [
+    {
+      file: pkg.main,
+      format: "cjs",
+      sourcemap: true,
+      exports: "named"
+    },
+    {
+      file: pkg.module,
+      format: "es",
+      sourcemap: true
+    }
+  ],
+  external: ["styled-components", "prop-types"], // See https://github.com/transitive-bullshit/create-react-library/issues/89 and https://stackoverflow.com/a/52935366/11144195
+  plugins: [
+    external(),
+    url(),
+    babel(),
+    resolve({ extensions: [".js", ".jsx", ".json"] }),
+    commonjs()
+  ]
 };
