@@ -1,11 +1,13 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:eslint-comments/recommended",
-    "plugin:array-func/all"
+    "plugin:array-func/all",
+    "prettier"
   ],
   "env": {
     "es6": true,
@@ -27,7 +29,6 @@
     }
   },
   "rules": {
-    "space-before-function-paren": 0, // Don't force es6 functions to include space before paren
     "prettier/prettier": "warn",
     "react/require-optimization": "warn",
     "react/destructuring-assignment": "warn",
