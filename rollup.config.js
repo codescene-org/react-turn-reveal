@@ -23,5 +23,11 @@ export default {
 		}
 	],
 	external: ["styled-components"], // See https://github.com/transitive-bullshit/create-react-library/issues/89 and https://stackoverflow.com/a/52935366/11144195
-	plugins: [external(), url(), babel(), resolve(), commonjs()]
+	plugins: [
+		external(),
+		url(),
+		babel(),
+		resolve({ extensions: [".js", ".jsx", ".json"] }),
+		commonjs()
+	]
 };
