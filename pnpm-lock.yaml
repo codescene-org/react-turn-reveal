@@ -15,6 +15,7 @@ devDependencies:
   eslint: 5.16.0
   eslint-config-prettier: 4.3.0_eslint@5.16.0
   eslint-import-resolver-node: 0.3.2
+  eslint-plugin-array-func: 3.1.3_eslint@5.16.0
   eslint-plugin-eslint-comments: 3.1.2_eslint@5.16.0
   eslint-plugin-import: 2.18.2_eslint@5.16.0
   eslint-plugin-jest: 22.14.0_eslint@5.16.0
@@ -5825,6 +5826,16 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-H6DOj+ejw7Tesdgbfs4jeS4YMFrT8uI8xwd1gtQqXssaR0EQ26L+2O/w6wkYFy2MymON0fTwHmXBvvfLNZVZEw==
+  /eslint-plugin-array-func/3.1.3_eslint@5.16.0:
+    dependencies:
+      eslint: 5.16.0
+    dev: true
+    engines:
+      node: '>= 6.8.0'
+    peerDependencies:
+      eslint: '>=3.0.0'
+    resolution:
+      integrity: sha512-uRfJ4d9Fyyvxm6/w++++RSQoXZyERFF0+6zqupgg5Mw/+eG4y19yrptTghJlApntKlPZBpA4XCOIBzJbvLrArQ==
   /eslint-plugin-es/1.4.0_eslint@5.16.0:
     dependencies:
       eslint: 5.16.0
@@ -15127,6 +15138,7 @@ specifiers:
   eslint: 5.16.0
   eslint-config-prettier: ^4.2.0
   eslint-import-resolver-node: ^0.3.2
+  eslint-plugin-array-func: ^3.1.3
   eslint-plugin-eslint-comments: ^3.1.2
   eslint-plugin-import: ^2.17.2
   eslint-plugin-jest: ^22.5.1

@@ -4,7 +4,8 @@
     "prettier",
     "plugin:jest/recommended",
     "plugin:jest/style",
-    "plugin:eslint-comments/recommended"
+    "plugin:eslint-comments/recommended",
+    "plugin:array-func/all"
   ],
   "env": {
     "es6": true,
