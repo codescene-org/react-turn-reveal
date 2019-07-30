@@ -15,7 +15,8 @@
     "react",
     "prettier",
     "json",
-    "jest"
+    "jest",
+    "no-loops"
   ],
   "parserOptions": {
     "sourceType": "module"
@@ -30,7 +31,8 @@
     "prettier/prettier": "warn",
     "react/require-optimization": "warn",
     "react/destructuring-assignment": "warn",
-    "react/static-property-placement": "warn"
+    "react/static-property-placement": "warn",
+    "no-loops/no-loops": "warn"
   },
   "overrides": [
     {

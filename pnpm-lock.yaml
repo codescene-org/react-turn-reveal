@@ -20,6 +20,7 @@ devDependencies:
   eslint-plugin-import: 2.18.2_eslint@5.16.0
   eslint-plugin-jest: 22.14.0_eslint@5.16.0
   eslint-plugin-json: 1.4.0
+  eslint-plugin-no-loops: 0.3.0_eslint@5.16.0
   eslint-plugin-node: 8.0.1_eslint@5.16.0
   eslint-plugin-prettier: 3.1.0_eslint@5.16.0+prettier@1.18.2
   eslint-plugin-promise: 4.2.1
@@ -5949,6 +5950,14 @@ packages:
       eslint: ^3 || ^4 || ^5
     resolution:
       integrity: sha512-cjN2ObWrRz0TTw7vEcGQrx+YltMvZoOEx4hWU8eEERDnBIU00OTq7Vr+jA7DFKxiwLNv4tTh5Pq2GUNEa8b6+w==
+  /eslint-plugin-no-loops/0.3.0_eslint@5.16.0:
+    dependencies:
+      eslint: 5.16.0
+    dev: true
+    peerDependencies:
+      eslint: '>=2.0.0'
+    resolution:
+      integrity: sha1-6B/stOqvSUqSbZyrqafNhNH+3n0=
   /eslint-plugin-node/8.0.1_eslint@5.16.0:
     dependencies:
       eslint: 5.16.0
@@ -15143,6 +15152,7 @@ specifiers:
   eslint-plugin-import: ^2.17.2
   eslint-plugin-jest: ^22.5.1
   eslint-plugin-json: ^1.4.0
+  eslint-plugin-no-loops: ^0.3.0
   eslint-plugin-node: ^8.0.1
   eslint-plugin-prettier: ^3.0.1
   eslint-plugin-promise: ^4.1.1
