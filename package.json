@@ -20,13 +20,13 @@
     "build": "rollup -c",
     "dev": "docz dev",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
-    "format": "npm-run-all --aggregate-output -p format:**",
-    "format:js": "eslint --fix \"{*,{src,docs}{/*,/**/*}}.{js,jsx,json}\"",
-    "format:mdx": "prettier --write \"{*,{src,docs}{/*,/**/*}}.mdx\"",
-    "lint": "npm-run-all --aggregate-output -p lint:**",
+    "format": "eslint --fix \"{*,{src,docs}{/*,/**/*}}.{js,jsx,json,mdx}\"",
+    "lint": "npm-run-all --aggregate-output -p lint:*",
     "lint:js": "eslint --max-warnings=0 \"{*,{src,docs}{/*,/**/*}}.{js,jsx,json}\"",
     "lint:md": "markdownlint \"{*,{src,docs}{/*,/**/*}}.md\"",
-    "lint:mdx": "npx markdownlint --config .markdownlint-mdxrc \"{*,{src,docs}{/*,/**/*}}.mdx\"",
+    "lint:mdx": "npm-run-all lint:mdx:*",
+    "lint:mdx:markdownlint": "markdownlint --config .markdownlint-mdxrc \"{*,{src,docs}{/*,/**/*}}.mdx\"",
+    "lint:mdx:eslint": "eslint \"{*,{src,docs}{/*,/**/*}}.mdx\"",
     "lint:package-json": "npmPkgJsonLint -c .npm-package-json-lintrc.json package.json"
   },
   "dependencies": {
@@ -41,13 +41,14 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.3.0",
     "@babel/preset-react": "^7.0.0",
+    "@rxts/eslint-plugin-mdx": "^0.5.0",
     "@types/jest": "^24.0.12",
     "@types/styled-components": "^4.1.18",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
-    "eslint": "5.16.0",
+    "eslint": "6.1.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-plugin-array-func": "^3.1.3",
@@ -91,7 +92,7 @@
   "lint-staged": {
     "{*,{src,docs}{/*,/**/*}}.{js,jsx,json}": "eslint --fix",
     "{*,{src,docs}{/*,/**/*}}.mdx": [
-      "prettier --write",
+      "eslint --fix",
       "markdownlint --config .markdownlint-mdxrc"
     ],
     "{*,{src,docs}{/*,/**/*}}.md": "markdownlint",

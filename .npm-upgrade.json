@@ -1,8 +1,0 @@
-{
-  "ignore": {
-    "eslint": {
-      "versions": "5.16.0",
-      "reason": "As required by `react-script` 3.0.0"
-    }
-  }
-}

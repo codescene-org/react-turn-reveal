@@ -29,8 +29,9 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
 <Playground>
   {() => {
     class TurnRevealWrapper extends React.Component {
-      constructor() {
-        // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
+      // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
+      constructor(props) {
+        super(props);
         this.state = {
           transition: Transition.hide,
           direction: Direction.right
@@ -75,8 +76,9 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
 <Playground>
   {() => {
     class TurnRevealWrapper extends React.Component {
+      // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
       constructor() {
-        // We can't use the class properties proposal yet (until 2.0 hopefully), because I can't get docz's `modifyBabelRc` to work
+        super();
         this.state = {
           transition: Transition.show
         };

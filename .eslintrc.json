@@ -35,10 +35,10 @@
     "class-methods-use-this": "warn",
     "no-useless-concat": "warn",
     "linebreak-style": ["error", "unix"],
-    "react/require-optimization": "warn",
-    "react/destructuring-assignment": "warn",
+    // "react/destructuring-assignment": "warn", doesn't have an option to ignore single usage yet, see https://github.com/yannickcr/eslint-plugin-react/issues/1731
     "react/static-property-placement": "warn",
-    "no-loops/no-loops": "warn"
+    "no-loops/no-loops": "warn",
+    "array-func/from-map": "off"
   },
   "overrides": [
     {
@@ -46,6 +46,13 @@
       "env": {
         "jest": true,
         "jest/globals": true
+      }
+    },
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:@rxts/mdx/recommended"],
+      "globals": {
+        "React": false
       }
     }
   ]
