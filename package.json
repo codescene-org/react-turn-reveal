@@ -21,6 +21,7 @@
     "dev": "docz dev",
     "deploy": "docz build && gh-pages -d .docz/dist --message \"[skip ci] Updates\"",
     "format": "eslint --fix \"{*,{src,docs}{/*,/**/*}}.{js,jsx,json,mdx}\"",
+    "format:docker": "dockerfile-utils format .circleci/images/primary/Dockerfile",
     "lint": "npm-run-all --aggregate-output -p lint:*",
     "lint:js": "eslint --max-warnings=0 \"{*,{src,docs}{/*,/**/*}}.{js,jsx,json}\"",
     "lint:md": "markdownlint \"{*,{src,docs}{/*,/**/*}}.md\"",
@@ -46,6 +47,7 @@
     "@types/styled-components": "^4.1.18",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
+    "dockerfile-utils": "^0.0.13",
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
     "eslint": "6.1.0",
@@ -97,6 +99,7 @@
     ],
     "{*,{src,docs}{/*,/**/*}}.md": "markdownlint",
     "{*,{src,docs}{/*,/**/*}}.{js,jsx,json,mdx}": "git add",
-    ".circleci/config.yml": "cross-env [ \"$CI\" != 1 ] && circleci config validate"
+    ".circleci/config.yml": "cross-env [ \"$CI\" != 1 ] && circleci config validate",
+    ".circleci/images/primary/Dockerfile": "dockerfile-utils lint"
   }
 }

@@ -11,6 +11,7 @@ devDependencies:
   '@types/styled-components': 4.1.18
   babel-eslint: 10.0.2_eslint@6.1.0
   cross-env: 5.2.0
+  dockerfile-utils: 0.0.13
   docz: 1.2.0
   docz-theme-default: 1.2.0
   eslint: 6.1.0
@@ -5380,6 +5381,20 @@ packages:
     dev: true
     resolution:
       integrity: sha1-uR2Ab10nGI5Ks+fRB9iBocxGQrY=
+  /dockerfile-ast/0.0.16:
+    dependencies:
+      vscode-languageserver-types: 3.14.0
+    dev: true
+    resolution:
+      integrity: sha512-+HZToHjjiLPl46TqBrok5dMrg5oCkZFPSROMQjRmvin0zG4FxK0DJXTpV/CUPYY2zpmEvVza55XLwSHFx/xZMw==
+  /dockerfile-utils/0.0.13:
+    dependencies:
+      dockerfile-ast: 0.0.16
+      vscode-languageserver-types: 3.6.0
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-+MAmhEnQ16B7+3C2UDWpmIS1D8EiKvpl4LDRjrMv94bOusaeRcLagRR0AvgV6NWT+oiRxDMLDyay6yjm6LESsw==
   /doctrine/1.5.0:
     dependencies:
       esutils: 2.0.3
@@ -14570,10 +14585,18 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Qyvlrftexu1acvwbMt+CDehVrDZtFV1GAJrKdOCHQL9bWNhzI06KEiSd4iXR0NUOuAdroG/uU4wBkH6e5CcTXg==
+  /vscode-languageserver-types/3.14.0:
+    dev: true
+    resolution:
+      integrity: sha512-lTmS6AlAlMHOvPQemVwo3CezxBp0sNB95KNPkqp3Nxd5VFEnuG1ByM0zlRWos0zjO3ZWtkvhal0COgiV1xIA4A==
   /vscode-languageserver-types/3.15.0-next.2:
     dev: true
     resolution:
       integrity: sha512-2JkrMWWUi2rlVLSo9OFR2PIGUzdiowEM8NgNYiwLKnXTjpwpjjIrJbNNxDik7Rv4oo9KtikcFQZKXbrKilL/MQ==
+  /vscode-languageserver-types/3.6.0:
+    dev: true
+    resolution:
+      integrity: sha512-GSgQtGmtza4PoNH0+iHWylWg/1sw2DODezqYWRxbN910dPchI3CQaSJN76csKcQGv55wsWgX82T6n74q8mFSpw==
   /vscode-nls/4.1.1:
     dev: true
     resolution:
@@ -15328,6 +15351,7 @@ specifiers:
   '@types/styled-components': ^4.1.18
   babel-eslint: ^10.0.1
   cross-env: ^5.2.0
+  dockerfile-utils: ^0.0.13
   docz: ^1.2.0
   docz-theme-default: ^1.2.0
   eslint: 6.1.0
