@@ -17,23 +17,23 @@ export default class FollowReveal extends React.Component {
   };
 
   state = {
-    infoTransition: Transition.hide,
-    infoDirection: Direction.right
+    transition: Transition.hide,
+    direction: Direction.right
   };
 
   revealRef = React.createRef();
 
-  animateInfo = (event, transition) => {
+  followMouse = (event, transition) => {
     event.preventDefault();
     this.setState({
-      infoTransition: transition,
-      infoDirection: getClosestEdge(event, this.revealRef.current)
+      transition: transition,
+      direction: getClosestEdge(event, this.revealRef.current)
     });
   };
 
   render() {
     const {
-      state: { infoTransition, infoDirection },
+      state: { transition, direction },
       props: { perspective, className, children }
     } = this;
 
@@ -43,16 +43,16 @@ export default class FollowReveal extends React.Component {
     return (
       <>
         <TurnReveal
-          transition={infoTransition}
-          direction={infoDirection}
+          transition={transition}
+          direction={direction}
           perspective={perspective}
           className={className}
         >
           {children}
         </TurnReveal>
         <div
-          onMouseEnter={e => this.animateInfo(e, Transition.show)}
-          onMouseLeave={e => this.animateInfo(e, Transition.hide)}
+          onMouseEnter={e => this.followMouse(e, Transition.show)}
+          onMouseLeave={e => this.followMouse(e, Transition.hide)}
           ref={this.revealRef}
           style={style}
         />
