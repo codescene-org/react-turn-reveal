@@ -13,13 +13,7 @@
     "es6": true,
     "browser": true
   },
-  "plugins": [
-    "react",
-    "prettier",
-    "json",
-    "jest",
-    "no-loops"
-  ],
+  "plugins": ["react", "prettier", "json", "jest", "no-loops"],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -30,6 +24,17 @@
   },
   "rules": {
     "prettier/prettier": "warn",
+    "complexity": "warn",
+    "dot-notation": "warn",
+    "no-alert": "error",
+    "no-console": "warn",
+    "no-implicit-coercion": "error",
+    "no-nested-ternary": "warn",
+    "max-nested-callbacks": ["warn", 3],
+    "block-scoped-var": "warn",
+    "class-methods-use-this": "warn",
+    "no-useless-concat": "warn",
+    "linebreak-style": ["error", "unix"],
     "react/require-optimization": "warn",
     "react/destructuring-assignment": "warn",
     "react/static-property-placement": "warn",
@@ -37,9 +42,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.spec.{js,jsx}"
-      ],
+      "files": "*.spec.{js,jsx}",
       "env": {
         "jest": true,
         "jest/globals": true
