@@ -3,8 +3,9 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import * as PropTypes from "prop-types";
-import Transition from "../Transition";
-import Direction from "../Direction";
+
+import Transition from "src/Transition";
+import Direction from "src/Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.PureComponent {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Placeholder from "./placeholder.png";
 import React from "react";
+
+import Placeholder from "./placeholder.png";
 
 export const Image = styled.img`
   width: 100%;

@@ -7,19 +7,26 @@
     "plugin:jest/style",
     "plugin:eslint-comments/recommended",
     "plugin:array-func/all",
+    "plugin:import/recommended",
+    "plugin:import/react",
     "prettier"
   ],
   "env": {
     "es6": true,
     "browser": true
   },
-  "plugins": ["react", "prettier", "json", "jest", "no-loops"],
+  "plugins": ["react", "prettier", "json", "jest", "no-loops", "import"],
   "parserOptions": {
     "sourceType": "module"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": "babel-module",
+    "import/extensions": [".js", ".jsx", ".mdx"],
+    "import/parsers": {
+      "@rxts/eslint-plugin-mdx": [".mdx"]
     }
   },
   "rules": {
@@ -58,7 +65,31 @@
     "react/jsx-handler-names": "warn",
     "react/jsx-pascal-case": "error",
     "no-loops/no-loops": "warn",
-    "array-func/from-map": "off"
+    "array-func/from-map": "off",
+    "import/no-useless-path-segments": "warn",
+    // "import/no-relative-parent-imports": "warn", // See https://github.com/benmosher/eslint-plugin-import/issues/1299
+    "import/no-extraneous-dependencies": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-nodejs-modules": "error",
+    "import/first": "warn",
+    "import/extensions": "error",
+    "import/prefer-default-export": "warn",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always-and-inside-groups",
+        "groups": ["external", ["internal", "sibling"]]
+      }
+    ]
+    // Don't enable yet, because https://github.com/tleunen/eslint-import-resolver-babel-module/issues/106
+    // "import/no-unused-modules": [
+    //   "warn",
+    //   {
+    //     "unusedExports": true,
+    //     "src": ["src/*", "docs/*"],
+    //     "ignoreExports": ["src/TurnReveal/TurnReveal.jsx"]
+    //   }
+    // ]
   },
   "overrides": [
     {
@@ -69,13 +100,19 @@
       }
     },
     {
-      "files": ["*.mdx"],
+      "files": "*.mdx",
       "extends": ["plugin:@rxts/mdx/recommended"],
       "globals": {
         "React": false
       },
       "rules": {
-        "lines-between-class-members": "off" // See https://github.com/mdx-js/mdx/issues/195
+        "lines-between-class-members": "off", // See https://github.com/mdx-js/mdx/issues/195
+        // See https://github.com/tleunen/eslint-import-resolver-babel-module/issues/106
+        "import/no-named-as-default-member": "off",
+        "import/no-named-as-default": "off",
+        "import/namespace": "off",
+        "import/default": "off",
+        "import/named": "off"
       }
     }
   ]

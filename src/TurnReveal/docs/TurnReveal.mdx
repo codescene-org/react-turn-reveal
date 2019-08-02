@@ -9,7 +9,8 @@ A `<TurnReveal>` component is a component that can turn out of or turn into view
 To use the component, place it in an element that has `position: relative` and make sure it is a direct child of the element on which you define the `perspective` property.
 
 import { Playground, Props } from "docz";
-import TurnReveal from "../TurnReveal";
+import styled from "styled-components";
+
 import Direction from "src/Direction";
 import Transition, { oppositeTransition } from "src/Transition";
 import {
@@ -18,7 +19,8 @@ import {
   CenteringFlexBox
 } from "docs/PlayGroundUtils";
 import ControlWrapper from "./ControlWrapper";
-import styled from "styled-components";
+
+import TurnReveal from "../TurnReveal";
 
 <Props of={TurnReveal} />
 

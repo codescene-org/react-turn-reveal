@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Direction from "../../Direction";
 import transpose from "object-transpose";
-import Transition from "../../Transition";
 import React from "react";
+
+import Direction from "src/Direction";
+import Transition from "src/Transition";
 
 const Container = styled.div`
   display: grid;
