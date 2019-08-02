@@ -8,9 +8,9 @@ import Direction from "../Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.PureComponent {
-  element = React.createRef();
-
   static defaultLayout = { width: "100%", height: "100%" };
+
+  element = React.createRef();
 
   render() {
     const {

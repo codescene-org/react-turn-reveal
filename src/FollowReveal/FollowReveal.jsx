@@ -26,7 +26,7 @@ export default class FollowReveal extends React.Component {
   followMouse = (event, transition) => {
     event.preventDefault();
     this.setState({
-      transition: transition,
+      transition,
       direction: getClosestEdge(event, this.revealRef.current)
     });
   };

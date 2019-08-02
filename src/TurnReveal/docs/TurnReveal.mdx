@@ -41,7 +41,7 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
       updateReveal(direction) {
         this.setState({
           transition: oppositeTransition(this.state.transition),
-          direction: direction
+          direction
         });
       }
       render() {
@@ -82,9 +82,9 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
         this.state = {
           transition: Transition.show
         };
-        this.updateReveal = this.updateReveal.bind(this);
+        this.handleClick = this.handleClick.bind(this);
       }
-      updateReveal() {
+      handleClick() {
         this.setState({
           transition: oppositeTransition(this.state.transition)
         });
@@ -93,10 +93,7 @@ Most of the code for running the playground below is moved to `docs/PlayGroundUt
         const perspective = 400;
         return (
           <CenteringFlexBox>
-            <button
-              style={{ width: "fit-content" }}
-              onClick={this.updateReveal}
-            >
+            <button style={{ width: "fit-content" }} onClick={this.handleClick}>
               {this.state.transition === Transition.show ? "Show" : "Hide"}
             </button>
             <div style={{ height: "10px" }} />
