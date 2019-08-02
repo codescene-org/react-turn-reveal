@@ -1,6 +1,6 @@
 const Transition = { hide: "hide", show: "show" };
 
-Object.freeze(Transition);
+// Object.freeze(Transition);
 export default Transition;
 
 export const oppositeTransition = transition =>

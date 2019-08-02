@@ -5,6 +5,6 @@ const Direction = {
   bottom: "bottom"
 };
 
-Object.freeze(Direction);
+// Object.freeze(Direction);
 
 export default Direction;

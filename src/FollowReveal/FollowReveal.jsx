@@ -1,8 +1,8 @@
 import React from "react";
 import TurnReveal from "../TurnReveal/TurnReveal";
 import * as PropTypes from "prop-types";
-import Transition from "../Transition";
-import Direction from "../Direction";
+import Transition from "src/Transition";
+import Direction from "src/Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class FollowReveal extends React.Component {
