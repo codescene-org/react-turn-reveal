@@ -18,6 +18,7 @@ devDependencies:
   docz-theme-default: 1.2.0
   eslint: 6.1.0
   eslint-config-prettier: 4.3.0_eslint@6.1.0
+  eslint-formatter-friendly: 7.0.0
   eslint-import-resolver-babel-module: 5.1.0_50b1ed796c81678aa4fcc4b784195447
   eslint-import-resolver-node: 0.3.2
   eslint-plugin-array-func: 3.1.3_eslint@6.1.0
@@ -5953,6 +5954,18 @@ packages:
       eslint-plugin-react-hooks: 1.x
     resolution:
       integrity: sha512-ZsaoXUIGsK8FCi/x4lT2bZR5mMkL/Kgj+Lnw690rbvvUr/uiwgFiD8FcfAhkCycm7Xte6O5lYz4EqMx2vX7jgw==
+  /eslint-formatter-friendly/7.0.0:
+    dependencies:
+      '@babel/code-frame': 7.0.0
+      chalk: 2.4.2
+      extend: 3.0.2
+      strip-ansi: 5.2.0
+      text-table: 0.2.0
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-WXg2D5kMHcRxIZA3ulxdevi8/BGTXu72pfOO5vXHqcAfClfIWDSlOljROjCSOCcKvilgmHz1jDWbvFCZHjMQ5w==
   /eslint-import-resolver-babel-module/5.1.0_50b1ed796c81678aa4fcc4b784195447:
     dependencies:
       '@babel/core': 7.5.5
@@ -15531,6 +15544,7 @@ specifiers:
   docz-theme-default: ^1.2.0
   eslint: 6.1.0
   eslint-config-prettier: ^4.2.0
+  eslint-formatter-friendly: ^7.0.0
   eslint-import-resolver-babel-module: ^5.1.0
   eslint-import-resolver-node: ^0.3.2
   eslint-plugin-array-func: ^3.1.3
