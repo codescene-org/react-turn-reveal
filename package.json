@@ -28,7 +28,8 @@
     "lint:mdx": "npm-run-all lint:mdx:*",
     "lint:mdx:markdownlint": "markdownlint --config .markdownlint-mdxrc \"{*,{src,docs}{/*,/**/*}}.mdx\"",
     "lint:mdx:eslint": "eslint --format friendly --max-warnings=0 \"{*,{src,docs}{/*,/**/*}}.mdx\"",
-    "lint:package-json": "npmPkgJsonLint -c .npm-package-json-lintrc.json package.json"
+    "lint:package-json": "npmPkgJsonLint -c .npm-package-json-lintrc.json package.json",
+    "lint:eslint": "npm-run-all lint:js lint:mdx:eslint"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
