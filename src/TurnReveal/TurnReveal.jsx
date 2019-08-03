@@ -103,12 +103,12 @@ const turnAnimation = ({
   hideAngles: { vertical, horizontal }
 }) => {
   const horizontalVector = [
-      0,
-      direction === Direction.right ? -1 : 1,
-      0,
-      horizontal
-    ],
-    verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
+    0,
+    direction === Direction.right ? -1 : 1,
+    0,
+    horizontal
+  ];
+  const verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
 
   const hiddenVector =
     direction === Direction.right || direction === Direction.left

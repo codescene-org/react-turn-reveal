@@ -63,24 +63,24 @@ export default class FollowReveal extends React.Component {
 }
 
 const getClosestEdge = (event, element) => {
-  const { width, height, top, left } = element.getBoundingClientRect(),
-    l = event.pageX - (left + window.pageXOffset),
-    t = event.pageY - (top + window.pageYOffset);
+  const { width, height, top, left } = element.getBoundingClientRect();
+  const l = event.pageX - (left + window.pageXOffset);
+  const t = event.pageY - (top + window.pageYOffset);
 
   const closestHorizontalEdge =
-      t > 0.5 * height
-        ? { edge: Direction.bottom, distance: height - t }
-        : {
-            edge: Direction.top,
-            distance: t
-          },
-    closestVerticalEdge =
-      l > 0.5 * width
-        ? { edge: Direction.right, distance: width - l }
-        : {
-            edge: Direction.left,
-            distance: l
-          };
+    t > 0.5 * height
+      ? { edge: Direction.bottom, distance: height - t }
+      : {
+          edge: Direction.top,
+          distance: t
+        };
+  const closestVerticalEdge =
+    l > 0.5 * width
+      ? { edge: Direction.right, distance: width - l }
+      : {
+          edge: Direction.left,
+          distance: l
+        };
 
   return closestHorizontalEdge.distance < closestVerticalEdge.distance
     ? closestHorizontalEdge.edge

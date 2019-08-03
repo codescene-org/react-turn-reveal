@@ -10,7 +10,8 @@
     "plugin:array-func/all",
     "plugin:import/recommended",
     "plugin:import/react",
-    "prettier"
+    "prettier-standard/prettier-file",
+    "prettier/react"
   ],
   "env": {
     "es6": true,
@@ -103,7 +104,10 @@
     },
     {
       "files": "*.mdx",
-      "extends": ["plugin:@rxts/mdx/recommended", "plugin:@rxts/mdx/overrides"]
+      "extends": ["plugin:@rxts/mdx/recommended", "plugin:@rxts/mdx/overrides"],
+      "rules": {
+        "no-multi-str": "off"
+      }
     }
   ]
 }
