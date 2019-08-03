@@ -4,6 +4,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.5.5
   '@babel/plugin-proposal-class-properties': 7.5.5_@babel+core@7.5.5
+  '@babel/plugin-proposal-export-default-from': 7.5.2_@babel+core@7.5.5
   '@babel/preset-env': 7.5.5_@babel+core@7.5.5
   '@babel/preset-react': 7.0.0_@babel+core@7.5.5
   '@pnpm/merge-driver': 0.1.0
@@ -432,6 +433,16 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-x/iMjggsKTFHYC6g11PL7Qy58IK8H5zqfm9e6hu4z1iH2IRyAp9u9dL80zA6R76yFovETFLKz2VJIC2iIPBuFw==
+  /@babel/plugin-proposal-export-default-from/7.5.2_@babel+core@7.5.5:
+    dependencies:
+      '@babel/core': 7.5.5
+      '@babel/helper-plugin-utils': 7.0.0
+      '@babel/plugin-syntax-export-default-from': 7.2.0_@babel+core@7.5.5
+    dev: true
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    resolution:
+      integrity: sha512-wr9Itk05L1/wyyZKVEmXWCdcsp/e185WUNl6AfYZeEKYaUPPvHXRDqO5K1VH7/UamYqGJowFRuCv30aDYZawsg==
   /@babel/plugin-proposal-json-strings/7.2.0_@babel+core@7.4.3:
     dependencies:
       '@babel/core': 7.4.3
@@ -634,6 +645,15 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-mVxuJ0YroI/h/tbFTPGZR8cv6ai+STMKNBq0f8hFxsxWjl94qqhsb+wXbpNMDPU3cfR1TIsVFzU3nXyZMqyK4w==
+  /@babel/plugin-syntax-export-default-from/7.2.0_@babel+core@7.5.5:
+    dependencies:
+      '@babel/core': 7.5.5
+      '@babel/helper-plugin-utils': 7.0.0
+    dev: true
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    resolution:
+      integrity: sha512-c7nqUnNST97BWPtoe+Ssi+fJukc9P9/JMZ71IOMNQWza2E+Psrd46N6AEvtw6pqK+gt7ChjXyrw4SPDO79f3Lw==
   /@babel/plugin-syntax-flow/7.2.0_@babel+core@7.4.3:
     dependencies:
       '@babel/core': 7.4.3
@@ -15616,6 +15636,7 @@ packages:
 specifiers:
   '@babel/core': ^7.2.2
   '@babel/plugin-proposal-class-properties': ^7.4.4
+  '@babel/plugin-proposal-export-default-from': ^7.5.2
   '@babel/preset-env': ^7.3.0
   '@babel/preset-react': ^7.0.0
   '@pnpm/merge-driver': ^0.1.0

@@ -8,7 +8,7 @@ import pkg from "./package.json";
 
 // noinspection JSUnusedGlobalSymbols
 export default {
-  input: "src/TurnReveal/TurnReveal.jsx",
+  input: "src/index.js",
   output: [
     {
       file: pkg.main,
