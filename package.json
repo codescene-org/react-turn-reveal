@@ -95,16 +95,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "{*,{src,docs}{/*,/**/*}}.{js,jsx,json}": "eslint --fix --format friendly --max-warnings=0",
-    "{*,{src,docs}{/*,/**/*}}.mdx": [
-      "eslint --fix --format friendly --max-warnings=0",
-      "markdownlint --config .markdownlint-mdxrc"
-    ],
-    "{*,{src,docs}{/*,/**/*}}.md": "markdownlint",
-    "{*,{src,docs}{/*,/**/*}}.{js,jsx,json,mdx}": "git add",
-    ".circleci/config.yml": "cross-env [ \"$CI\" != 1 ] && circleci config validate",
-    ".circleci/images/primary/Dockerfile": "dockerfile-utils lint"
   }
 }
