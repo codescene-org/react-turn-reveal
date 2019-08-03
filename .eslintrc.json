@@ -15,7 +15,7 @@
     "es6": true,
     "browser": true
   },
-  "plugins": ["react", "prettier", "json", "jest", "no-loops", "import"],
+  "plugins": ["react", "react-hooks", "prettier", "json", "jest", "no-loops", "import"],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -79,7 +79,7 @@
         "newlines-between": "always-and-inside-groups",
         "groups": ["external", ["internal", "sibling"]]
       }
-    ]
+    ],
     // Don't enable yet, because https://github.com/tleunen/eslint-import-resolver-babel-module/issues/106
     // "import/no-unused-modules": [
     //   "warn",
@@ -89,6 +89,8 @@
     //     "ignoreExports": ["src/TurnReveal/TurnReveal.jsx"]
     //   }
     // ]
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "overrides": [
     {
