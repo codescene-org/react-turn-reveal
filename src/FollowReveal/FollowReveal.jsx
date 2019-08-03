@@ -1,6 +1,7 @@
 import React from "react";
-import TurnReveal from "../TurnReveal/TurnReveal";
 import * as PropTypes from "prop-types";
+
+import TurnReveal from "src/TurnReveal/TurnReveal";
 import Transition from "src/Transition";
 import Direction from "src/Direction";
 
@@ -26,7 +27,7 @@ export default class FollowReveal extends React.Component {
   followMouse = (event, transition) => {
     event.preventDefault();
     this.setState({
-      transition: transition,
+      transition,
       direction: getClosestEdge(event, this.revealRef.current)
     });
   };
@@ -62,24 +63,24 @@ export default class FollowReveal extends React.Component {
 }
 
 const getClosestEdge = (event, element) => {
-  const { width, height, top, left } = element.getBoundingClientRect(),
-    l = event.pageX - (left + window.pageXOffset),
-    t = event.pageY - (top + window.pageYOffset);
+  const { width, height, top, left } = element.getBoundingClientRect();
+  const l = event.pageX - (left + window.pageXOffset);
+  const t = event.pageY - (top + window.pageYOffset);
 
   const closestHorizontalEdge =
-      t > 0.5 * height
-        ? { edge: Direction.bottom, distance: height - t }
-        : {
-            edge: Direction.top,
-            distance: t
-          },
-    closestVerticalEdge =
-      l > 0.5 * width
-        ? { edge: Direction.right, distance: width - l }
-        : {
-            edge: Direction.left,
-            distance: l
-          };
+    t > 0.5 * height
+      ? { edge: Direction.bottom, distance: height - t }
+      : {
+          edge: Direction.top,
+          distance: t
+        };
+  const closestVerticalEdge =
+    l > 0.5 * width
+      ? { edge: Direction.right, distance: width - l }
+      : {
+          edge: Direction.left,
+          distance: l
+        };
 
   return closestHorizontalEdge.distance < closestVerticalEdge.distance
     ? closestHorizontalEdge.edge

@@ -3,23 +3,32 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:eslint-comments/recommended",
     "plugin:array-func/all",
-    "prettier"
+    "plugin:import/recommended",
+    "plugin:import/react",
+    "plugin:promise/recommended",
+    "prettier-standard/prettier-file",
+    "prettier/react"
   ],
   "env": {
     "es6": true,
     "browser": true
   },
-  "plugins": ["react", "prettier", "json", "jest", "no-loops"],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "json", "jest", "no-loops", "import", "promise"],
   "parserOptions": {
     "sourceType": "module"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": "babel-module",
+    "import/parsers": {
+      "eslint-mdx": [".mdx"]
     }
   },
   "rules": {
@@ -35,10 +44,57 @@
     "class-methods-use-this": "warn",
     "no-useless-concat": "warn",
     "linebreak-style": ["error", "unix"],
+    "no-useless-return": "warn",
+    "yoda": "warn",
+    "no-shadow": "warn",
+    "max-statements-per-line": "warn",
+    "no-lonely-if": "warn",
+    "object-shorthand": "warn",
+    "prefer-rest-params": "error",
+    "lines-between-class-members": "warn",
     // "react/destructuring-assignment": "warn", doesn't have an option to ignore single usage yet, see https://github.com/yannickcr/eslint-plugin-react/issues/1731
     "react/static-property-placement": "warn",
+    "react/default-props-match-prop-types": "error",
+    "react/no-redundant-should-component-update": "error",
+    "react/no-this-in-sfc": "error",
+    "react/no-unused-prop-types": "warn",
+    "react/no-unused-state": "warn",
+    "react/prefer-read-only-props": "warn",
+    "react/self-closing-comp": "warn",
+    "react/sort-comp": "warn",
+    "react/style-prop-object": "error",
+    "react/void-dom-elements-no-children": "error",
+    "react/jsx-handler-names": "warn",
+    "react/jsx-pascal-case": "error",
     "no-loops/no-loops": "warn",
-    "array-func/from-map": "off"
+    "array-func/from-map": "off",
+    "import/no-useless-path-segments": "warn",
+    // "import/no-relative-parent-imports": "warn", // See https://github.com/benmosher/eslint-plugin-import/issues/1299
+    "import/no-extraneous-dependencies": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-nodejs-modules": "error",
+    "import/first": "warn",
+    "import/extensions": "error",
+    "import/prefer-default-export": "warn",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always-and-inside-groups",
+        "groups": ["external", ["internal", "sibling"]]
+      }
+    ],
+    // Don't enable yet, because https://github.com/tleunen/eslint-import-resolver-babel-module/issues/106
+    // "import/no-unused-modules": [
+    //   "warn",
+    //   {
+    //     "unusedExports": true,
+    //     "src": ["src/*", "docs/*"],
+    //     "ignoreExports": ["src/TurnReveal/TurnReveal.jsx"]
+    //   }
+    // ]
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "promise/prefer-await-to-callbacks": "warn"
   },
   "overrides": [
     {
@@ -49,10 +105,10 @@
       }
     },
     {
-      "files": ["*.mdx"],
-      "extends": ["plugin:@rxts/mdx/recommended"],
-      "globals": {
-        "React": false
+      "files": "*.mdx",
+      "extends": ["plugin:@rxts/mdx/recommended", "plugin:@rxts/mdx/overrides"],
+      "rules": {
+        "no-multi-str": "off"
       }
     }
   ]

@@ -63,14 +63,14 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - run: npm run build
+      - run: npm run -s build
 
   lint:
     <<: *environment
     steps:
       - checkout
       - *attach_workspace
-      - run: npm run lint
+      - run: npm run -s lint
 
 #  test:
 #    <<: *environment

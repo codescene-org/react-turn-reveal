@@ -3,14 +3,15 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import * as PropTypes from "prop-types";
-import Transition from "../Transition";
-import Direction from "../Direction";
+
+import Transition from "src/Transition";
+import Direction from "src/Direction";
 
 // noinspection JSUnusedGlobalSymbols
 export default class TurnReveal extends React.PureComponent {
-  element = React.createRef();
-
   static defaultLayout = { width: "100%", height: "100%" };
+
+  element = React.createRef();
 
   render() {
     const {
@@ -102,12 +103,12 @@ const turnAnimation = ({
   hideAngles: { vertical, horizontal }
 }) => {
   const horizontalVector = [
-      0,
-      direction === Direction.right ? -1 : 1,
-      0,
-      horizontal
-    ],
-    verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
+    0,
+    direction === Direction.right ? -1 : 1,
+    0,
+    horizontal
+  ];
+  const verticalVector = [direction === Direction.top ? -1 : 1, 0, 0, vertical];
 
   const hiddenVector =
     direction === Direction.right || direction === Direction.left
