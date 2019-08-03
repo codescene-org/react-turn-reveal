@@ -10,6 +10,7 @@
     "plugin:array-func/all",
     "plugin:import/recommended",
     "plugin:import/react",
+    "plugin:promise/recommended",
     "prettier-standard/prettier-file",
     "prettier/react"
   ],
@@ -17,7 +18,7 @@
     "es6": true,
     "browser": true
   },
-  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "json", "jest", "no-loops", "import"],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "json", "jest", "no-loops", "import", "promise"],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -92,7 +93,8 @@
     //   }
     // ]
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "promise/prefer-await-to-callbacks": "warn"
   },
   "overrides": [
     {
